@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
 import LoginForm from '../LoginForm/LoginForm';
 import { useHistory } from 'react-router-dom';
+
 import axios from 'axios';
+import { useDispatch, useSelector} from 'react-redux';
+
 
 function LoginPage() {
   const history = useHistory();
+  const dispatch = useDispatch();
+
   //Begin Audio recording demo section
   //MicRecorder package https://www.npmjs.com/package/mic-recorder-to-mp3 auto encodes via LameJS dependency
   const MicRecorder = require('mic-recorder-to-mp3');
@@ -28,7 +33,9 @@ function LoginPage() {
 
   // dispatch to saga upon stop recording
   const storeAudio = () => {
-    //dispatch
+    dispatch({ type: })
+
+
   }
   // stop mic recorder function
   const stop = () => {

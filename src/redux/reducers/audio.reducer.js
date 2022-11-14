@@ -1,6 +1,6 @@
 const audioReducer = (state = [], action) => {
     switch (action.type) {
-        case 'SET_AUDIO':
+        case 'SAVE_AUDIO':
           return action.payload;
         default:
           return state;
