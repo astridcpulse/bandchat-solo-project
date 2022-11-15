@@ -2,9 +2,9 @@ import { put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 
 function* postProject(action){
-    console.log('action payload', action);
+    console.log('action payload', action.payload);
     
-        yield axios.post('/api/projects', action.payload)
+        yield axios.post('/api/projects', {name: action.payload})
 
     yield put({type:'FETCH_PROJECTS'})
 }

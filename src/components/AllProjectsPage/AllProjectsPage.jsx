@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import { useDispatch, useSelector} from 'react-redux';
 import { Button, OutlinedInput } from '@mui/material';
@@ -8,21 +8,29 @@ function AllProjectsPage() {
   const dispatch = useDispatch();
   // this component doesn't do much to start, just renders some user reducer info to the DOM
   const user = useSelector((store) => store.user);
-
+  const projects = useSelector((store) => store.project);
   // new project name set by create new proj button
   const [newProject, setNewProject]  = useState('');
   
+  //gets all projects on load 
+  useEffect(() => {
+    fetchProjects();
+  }, []);
+
   //gets all projects for this user from db
+  //TODO make sure it only gets projects from current user
   const fetchProjects = () => {
-    //TODO create fetch projects GET_PROJECTS
-    //TODO put this fetchPrjects function in a useEffect
+    dispatch({
+      type: 'FETCH_PROJECTS'
+    });
   }
 
   //dispatches project to saga, redux store, and posts to database
   const postProject = () => {
-
-    dispatch({ type: 'POST_PROJECT', payload: newProject })
-    
+    dispatch({ 
+      type: 'POST_PROJECT', 
+      payload: newProject 
+    });
   }
 
 
@@ -42,7 +50,13 @@ function AllProjectsPage() {
       >
         Create New Project
       </Button>
-
+      <ul>
+      {projects.map(project => 
+        <li key={project.id}>
+          <h3>{project.project_name}</h3>
+        </li>
+        )}
+      </ul>
       {/* TODO when all projects are listed out, pressing on one will push history to project workplace page */}
 
     </div>
