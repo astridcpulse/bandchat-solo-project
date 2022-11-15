@@ -24,7 +24,7 @@ app.use(passport.session());
 
 /* Routes */
 app.use('/api/user', userRouter);
-app.use('api/audio', audioRouter)
+app.use('/api/audio', audioRouter)
 // Serve static files
 app.use(express.static('build'));
 

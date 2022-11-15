@@ -33,9 +33,8 @@ function LoginPage() {
 
   // dispatch to saga upon stop recording
   const storeAudio = () => {
-    dispatch({ type: })
-
-
+    console.log('blobUrl', {blobUrl})
+    dispatch({ type: 'POST_AUDIO', payload: blobUrl });
   }
   // stop mic recorder function
   const stop = () => {
@@ -43,9 +42,13 @@ function LoginPage() {
       .stop()
       .getMp3()
       .then(([buffer, blob]) => {
-        setBlobUrl(URL.createObjectURL(blob));
         setRecordStatus(false);
-      })
+        console.log('blob', blob);
+        let bu = URL.createObjectURL(blob);
+        console.log('bu', bu);
+        setBlobUrl(bu);
+        storeAudio();
+  })
       .catch((e) => console.log(e));
   };
 

@@ -2,11 +2,12 @@ import { put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 
 function* postAudio(action){
-    try {
+    console.log('action payload', action);
+    
         yield axios.post('/api/audio', action.payload)
-    } catch (err){
-        console.error('error in storing audio to db', err);
-    }
+    //  catch (err){
+    //     console.error('error in storing audio to db', err);
+    // }
 
     yield put({type:'FETCH_AUDIO'})
 }
