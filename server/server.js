@@ -11,7 +11,7 @@ const passport = require('./strategies/user.strategy');
 const userRouter = require('./routes/user.router');
 const audioRouter = require('./routes/audio.router');
 const projectsRouter = require('./routes/projects.router');
-
+const allUsersRouter = require('./routes/allUsers.router');
 // Body parser middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -28,6 +28,7 @@ app.use(passport.session());
 app.use('/api/user', userRouter);
 app.use('/api/audio', audioRouter);
 app.use('/api/projects', projectsRouter);
+app.use('/api/allUsers', allUsersRouter);
 // Serve static files
 app.use(express.static('build'));
 

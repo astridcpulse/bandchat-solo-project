@@ -11,6 +11,8 @@ function AllProjectsPage() {
   const history = useHistory();
   // this component doesn't do much to start, just renders some user reducer info to the DOM
   const user = useSelector((store) => store.user);
+  //TODO: setup the useSelector for the allUser store
+
   const projects = useSelector((store) => store.project);
   // new project name set by create new proj button
   const [newProject, setNewProject]  = useState('');
@@ -18,6 +20,7 @@ function AllProjectsPage() {
   //gets all projects on load 
   useEffect(() => {
     fetchProjects();
+    fetchAllUsers();
   }, []);
 
   //gets all projects for this user from db
@@ -26,6 +29,12 @@ function AllProjectsPage() {
     dispatch({
       type: 'FETCH_PROJECTS'
     });
+  }
+
+  const fetchAllUsers = () =>{
+    dispatch({
+      type: 'FETCH_ALL_USERS'
+    })
   }
 
   //dispatches project to saga, redux store, and posts to database
@@ -60,7 +69,7 @@ function AllProjectsPage() {
           
             <h3 onClick={() => history.push(`/workspace/${project.id}`)}
             >{project.project_name}</h3>
-          
+          {/* TODO add input autocomplete field to add all users to the project */}
         </li>
         )}
       </ul>

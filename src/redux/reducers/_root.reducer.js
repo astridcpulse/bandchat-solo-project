@@ -3,6 +3,7 @@ import errors from './errors.reducer';
 import user from './user.reducer';
 import audio from './audio.reducer';
 import project from './project.reducer';
+import allUsers from './allUsers.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -13,8 +14,9 @@ import project from './project.reducer';
 const rootReducer = combineReducers({
   errors, // contains registrationMessage and loginMessage
   user,// will have an id and username if someone is logged in
-  project
   // audio, //audio store
+  project,
+  allUsers
 });
 
 export default rootReducer;
