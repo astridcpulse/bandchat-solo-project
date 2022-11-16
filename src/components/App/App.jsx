@@ -19,6 +19,7 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import ProjectWorkspace from '../ProjectWorkspace/ProjectWorkspace';
 
 import './App.css';
 
@@ -55,7 +56,7 @@ function App() {
           <ProtectedRoute
             // logged in shows AllProjectsPage else shows LoginPage
             exact
-            path="/user"
+            path="/projects"
           >
             <AllProjectsPage />
           </ProtectedRoute>
@@ -75,7 +76,7 @@ function App() {
             {user.id ?
               // If the user is already logged in, 
               // redirect to the /user page
-              <Redirect to="/user" />
+              <Redirect to="/projects" />
               :
               // Otherwise, show the login page
               <LoginPage />
@@ -89,7 +90,7 @@ function App() {
             {user.id ?
               // If the user is already logged in, 
               // redirect them to the /user page
-              <Redirect to="/user" />
+              <Redirect to="/projects" />
               :
               // Otherwise, show the registration page
               <RegisterPage />
@@ -103,12 +104,20 @@ function App() {
             {user.id ?
               // If the user is already logged in, 
               // redirect them to the /user page
-              <Redirect to="/user" />
+              <Redirect to="/projects" />
               :
               // Otherwise, show the Landing page
               <LandingPage />
             }
           </Route>
+
+
+          <ProtectedRoute path='/workspace/:id' exact>
+          
+          
+            <ProjectWorkspace />
+          </ProtectedRoute>    
+          
 
           {/* If none of the other routes matched, we will show a 404. */}
           <Route>

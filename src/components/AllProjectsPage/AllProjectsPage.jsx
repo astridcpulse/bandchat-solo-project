@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import { useDispatch, useSelector} from 'react-redux';
+import { Link, useHistory } from 'react-router-dom';
+
 import { Button, OutlinedInput } from '@mui/material';
-import { useHistory } from 'react-router-dom';
+
 
 function AllProjectsPage() {
   const dispatch = useDispatch();
+  const history = useHistory();
   // this component doesn't do much to start, just renders some user reducer info to the DOM
   const user = useSelector((store) => store.user);
   const projects = useSelector((store) => store.project);
@@ -50,13 +53,19 @@ function AllProjectsPage() {
       >
         Create New Project
       </Button>
+      {user.id && (
       <ul>
       {projects.map(project => 
         <li key={project.id}>
-          <h3>{project.project_name}</h3>
+          
+            <h3 onClick={() => history.push(`/workspace/${project.id}`)}
+            >{project.project_name}</h3>
+          
         </li>
         )}
       </ul>
+      )}
+
       {/* TODO when all projects are listed out, pressing on one will push history to project workplace page */}
 
     </div>
