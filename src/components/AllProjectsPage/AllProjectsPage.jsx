@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import { useDispatch, useSelector} from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
-
-import { Button, OutlinedInput } from '@mui/material';
+import AddCollaborators from '../AddCollaborators/AddCollaborators'
+import { Button, OutlinedInput, Autocomplete, TextField } from '@mui/material';
 
 
 function AllProjectsPage() {
@@ -11,11 +11,12 @@ function AllProjectsPage() {
   const history = useHistory();
   // this component doesn't do much to start, just renders some user reducer info to the DOM
   const user = useSelector((store) => store.user);
-  //TODO: setup the useSelector for the allUser store
 
   const projects = useSelector((store) => store.project);
   // new project name set by create new proj button
   const [newProject, setNewProject]  = useState('');
+  //collaborators on a specific project
+  const [collaborators, setCollaborators] = useState([]);
   
   //gets all projects on load 
   useEffect(() => {
@@ -69,6 +70,8 @@ function AllProjectsPage() {
           
             <h3 onClick={() => history.push(`/workspace/${project.id}`)}
             >{project.project_name}</h3>
+            <AddCollaborators />
+          
           {/* TODO add input autocomplete field to add all users to the project */}
         </li>
         )}

@@ -57,7 +57,7 @@ function ProjectWorkspace(){
             TODO: get a store of your current collaborators for this to reference */}
             <Autocomplete
                 disablePortal
-                id="combo-box-demo"
+                id="helper-input"
                 options={helpers}
                 sx={{ width: 300 }}
                 renderInput={(params) => <TextField {...params} label="Helpers" />}
