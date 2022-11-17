@@ -70,7 +70,9 @@ function AllProjectsPage() {
           
             <h3 onClick={() => history.push(`/workspace/${project.id}`)}
             >{project.project_name}</h3>
-            <AddCollaborators />
+            <AddCollaborators 
+              projectId={project.id}
+            />
           
           {/* TODO add input autocomplete field to add all users to the project */}
         </li>
