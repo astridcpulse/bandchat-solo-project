@@ -30,7 +30,7 @@ app.use('/api/user', userRouter);
 app.use('/api/audio', audioRouter);
 app.use('/api/projects', projectsRouter);
 app.use('/api/allUsers', allUsersRouter);
-app.use('api/collaborators', collaboratorsRouter);
+app.use('/api/collaborators', collaboratorsRouter);
 // Serve static files
 app.use(express.static('build'));
 

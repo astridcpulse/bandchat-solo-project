@@ -23,9 +23,11 @@ function AddCollaborators({projectId}){
             // posting directly to server and db, collaborator saga is unused right now
             console.log('person', person)
             // isolating the id number from the string
-            let userId = person.split(' ').length - 1;
+            let userId = parseInt(person.split(' ')[person.split(' ').length - 1]);
+
+            console.log('userid', userId)
             // posting the user id number, and the passed up project id number
-            axios.post('/api/collaborators', {user_id: userId, projectId: projectId });
+            axios.post('/api/collaborators', {userId: userId, projectId: projectId });
             
             // dispatch({
             //     type: 'POST_COLLABORATOR',

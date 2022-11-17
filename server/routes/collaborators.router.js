@@ -22,20 +22,21 @@ const {
 // });
 
 
-//post a new project to the database
+//post a collaborators involved with project to the database
 router.post('/', rejectUnauthenticated, (req, res) => {
-    console.log('req body', req.body.user_id)
-    // req.user.id
-    // const sqlText = `INSERT INTO "user_project_data" ("user_id", "project_id") VALUES ($1, $2);`
-    const sqlParams = [req.body.name];
+    console.log('req body proj', req.body.projectId)
+    console.log('req body user', req.body.userId)
+
+    const sqlText = `INSERT INTO "user_project_data" ("user_id", "project_id") VALUES ($1, $2);`
+    const sqlParams = [req.body.userId, req.body.projectId];
 
     pool.query(sqlText, sqlParams)
         .then((dbRes) => {
-            console.log('success in postProject');
+            console.log('success in postCollaborators');
             res.sendStatus(200);
         })
         .catch((err) => {
-            console.error('error in post', err);
+            console.error('error in post collaborators', err);
             res.sendStatus(500);
         })
 });
