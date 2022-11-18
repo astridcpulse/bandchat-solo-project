@@ -8,18 +8,29 @@ const {
 
 //gets all projects from database
 //TODO should only get all projects of a particular user id
-// router.get('/', rejectUnauthenticated, (req, res) => {
-
-//     const sqlText = `SELECT * FROM "project_data" ORDER BY "id";`
-//     pool.query(sqlText)
-//         .then((dbRes) => {  
-//             res.send(dbRes.rows);
-//         })
-//         .catch((dbErr) => {
-//             console.error('error in GET projects', dbErr)
-//             res.sendStatus(500);
-//         });
-// });
+router.get('/:id', rejectUnauthenticated, (req, res) => {
+    console.log('req params id', req.params.id)
+    const sqlText = `SELECT 
+                        "user".id AS "user_id",
+                        "user".username,
+                        "project_data".id AS "project_id",
+                        "project_data".project_name
+                    FROM "user"
+                    JOIN "user_project_data" ON  "user_id" = "user".id
+                    JOIN "project_data" ON "user_project_data".project_id = "project_data".id
+                    WHERE "project_id" = $1;
+                    `;
+                    
+    pool.query(sqlText, [req.params.id])
+        .then((dbRes) => {  
+            res.send(dbRes.rows);
+           
+        })
+        .catch((dbErr) => {
+            console.error('error in GET collaborators', dbErr)
+            res.sendStatus(500);
+        });
+});
 
 
 //post a collaborators involved with project to the database

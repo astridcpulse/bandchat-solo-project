@@ -15,9 +15,7 @@ function AllProjectsPage() {
   const projects = useSelector((store) => store.project);
   // new project name set by create new proj button
   const [newProject, setNewProject]  = useState('');
-  //collaborators on a specific project
-  const [collaborators, setCollaborators] = useState([]);
-  
+
   //gets all projects on load 
   useEffect(() => {
     fetchProjects();
