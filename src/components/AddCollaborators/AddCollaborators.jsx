@@ -20,8 +20,9 @@ function AddCollaborators({projectId}){
     // useSElector the store.collaborators and display them to the dom. 
     // put fetchCollaborators in a useEffect
 
-    const postCollaborators = () => {
-        console.log('values', value)
+    const postCollaborators = (evt) => {
+        evt.preventDefault();
+
         for(let person of value){
             // posting directly to server and db, collaborator saga is unused right now
             // console.log('person', person)
@@ -36,6 +37,7 @@ function AddCollaborators({projectId}){
             //     type: 'POST_COLLABORATOR',
             //     payload: person
             // }) 
+            
         }
         fetchCollaborators();
     }
@@ -52,12 +54,19 @@ function AddCollaborators({projectId}){
     return(
         <>
         <ul>
-            {collaborator && collaborator.map((person) => 
+            {collaborator && collaborator.map((person) => {
+                if(person.project_id === projectId){
+                    return(
                         <li> {person.user_id} </li>  
-            )}
+                    )
+                }
+            })}
+            
         </ul>
         
-        <form>
+        <form
+            onSubmit={postCollaborators}
+        >
         <Autocomplete
             multiple
             sx={{
@@ -80,7 +89,6 @@ function AddCollaborators({projectId}){
             sx={{ size: 'small' }}
             variant="contained"
             type="submit"
-            onClick={postCollaborators}
         >
             add collaborators
         </Button>

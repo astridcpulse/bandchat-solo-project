@@ -6,7 +6,7 @@ import axios from 'axios';
 //TODO: Finish the fetch collaborators GET when I answer the question below
 function* fetchCollaborators(action){
     let response = yield axios.get(`api/collaborators/${action.payload}`);
-    console.log(response.data)
+    console.log('fetch response.data', response.data)
 //     //NOTE: I'm not sure that I need to place these in a store? If I do have a store then 
 //     //its going to be doing this loop of GETs into one store....which could be tricky to pull out the right stuff?
 //     //I might be able to do something with like ID of the particular project, but then Id need to have my junction

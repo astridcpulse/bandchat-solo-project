@@ -9,7 +9,6 @@ const {
 //gets all projects from database
 //TODO should only get all projects of a particular user id
 router.get('/:id', rejectUnauthenticated, (req, res) => {
-    console.log('req params id', req.params.id)
     const sqlText = `SELECT 
                         "user".id AS "user_id",
                         "user".username,
@@ -20,7 +19,7 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
                     JOIN "project_data" ON "user_project_data".project_id = "project_data".id
                     WHERE "project_id" = $1;
                     `;
-                    
+
     pool.query(sqlText, [req.params.id])
         .then((dbRes) => {  
             res.send(dbRes.rows);
