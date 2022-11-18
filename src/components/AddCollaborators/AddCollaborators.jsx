@@ -53,11 +53,12 @@ function AddCollaborators({projectId}){
 
     return(
         <>
+        <h4> collaborators: </h4>
         <ul>
             {collaborator && collaborator.map((person) => {
                 if(person.project_id === projectId){
                     return(
-                        <li> {person.user_id} </li>  
+                        <li> {person.username} </li>  
                     )
                 }
             })}
