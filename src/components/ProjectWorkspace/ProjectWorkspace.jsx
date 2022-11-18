@@ -8,10 +8,11 @@ import { ThemeProvider,
         Autocomplete, 
         createMuiTheme, 
         Button, 
-        Typography 
-        } from '@mui/material';
+        Typography
+        } 
+        from '@mui/material';
 
-import Toolbar from '../Toolbar/Toolbar';
+import WorkspaceTabs from '../WorkspaceTabs/WorkspaceTabs';
 
 
 function ProjectWorkspace(){
@@ -23,11 +24,14 @@ function ProjectWorkspace(){
 
     const [thisProject, setThisProject] = useState('');
 
+
     const chosenProject = (project.find((project) => {
         if(project.id == params.id){
             return project;
         }
     }))
+    
+   
 
     useEffect(() => {
         setThisProject(chosenProject);
@@ -76,9 +80,15 @@ function ProjectWorkspace(){
                 Delete Part
             </Button>
 
-            <Toolbar />
+            <WorkspaceTabs />
+
+            
+
+            {/* <AudioRecorder /> */}
         </>
     );
 }
+
+
 
 export default ProjectWorkspace;

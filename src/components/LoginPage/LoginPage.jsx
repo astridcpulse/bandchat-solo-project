@@ -2,57 +2,8 @@ import React, { useState } from 'react';
 import LoginForm from '../LoginForm/LoginForm';
 import { useHistory } from 'react-router-dom';
 
-import axios from 'axios';
-import { useDispatch, useSelector} from 'react-redux';
-
-
 function LoginPage() {
   const history = useHistory();
-  const dispatch = useDispatch();
-
-  //Begin Audio recording demo section
-  //MicRecorder package https://www.npmjs.com/package/mic-recorder-to-mp3 auto encodes via LameJS dependency
-  const MicRecorder = require('mic-recorder-to-mp3');
-
-  const Recorder = new MicRecorder({ bitRate: 128});
-
-  //state for whether we're recording or not. And the "blob" as the encoded sound file
-  const [recordStatus, setRecordStatus] = useState(true);
-  const [blobUrl, setBlobUrl] = useState('');
-
-  // start mic recorder function
-  const start = () => {
-      Recorder
-        .start()
-        .then(() => {
-          setRecordStatus(true);
-
-        })
-        .catch((err) => console.error('Start error', err));
-  };
-
-  // dispatch to saga upon stop recording
-  const storeAudio = () => {
-    console.log('blobUrl', {blobUrl})
-    dispatch({ type: 'POST_AUDIO', payload: blobUrl });
-  }
-  // stop mic recorder function
-  const stop = () => {
-    Recorder
-      .stop()
-      .getMp3()
-      .then(([buffer, blob]) => {
-        setRecordStatus(false);
-        console.log('blob', blob);
-        let bu = URL.createObjectURL(blob);
-        console.log('bu', bu);
-        setBlobUrl(bu);
-        storeAudio();
-  })
-      .catch((e) => console.log(e));
-  };
-
-// end audio recording demo section
 
   return (
     <div>
@@ -68,11 +19,7 @@ function LoginPage() {
         >
           Register
         </button>
-      {/* this portion is for the audio. Just a demo TODO move later */}
-        <button onClick={start} >Record</button>
-          <button onClick={stop}>Stop</button>
-          <audio src={blobUrl} controls/>
-      {/* end audio demo portion */}
+      
       </center>
         
 

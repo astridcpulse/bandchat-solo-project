@@ -11,6 +11,7 @@ function AddCollaborators({projectId}){
 
     const [value, setValue] = useState([]);
     const [inputValue, setInputValue] = useState('');
+    
     const allUsers = useSelector((store) => store.allUsers);
     const collaborator = useSelector((store) => store.collaborator);
 
@@ -33,10 +34,7 @@ function AddCollaborators({projectId}){
             // posting the user id number, and the passed up project id number
             axios.post('/api/collaborators', {userId: userId, projectId: projectId });
             
-            // dispatch({
-            //     type: 'POST_COLLABORATOR',
-            //     payload: person
-            // }) 
+           
             
         }
         fetchCollaborators();
@@ -47,10 +45,8 @@ function AddCollaborators({projectId}){
             type: 'FETCH_COLLABORATORS',
             payload: projectId
         })
-        // let response = axios.get(`api/collaborators/${projectId}`)
-        // console.log('response', response)
+       
     }
-
     return(
         <>
         <h4> collaborators: </h4>
