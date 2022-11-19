@@ -1,4 +1,6 @@
 import {useEffect, useState } from 'react';
+import { useDispatch, useSelector} from 'react-redux';
+import { useParams } from 'react-router-dom';
 
 import PartWorkspace from '../PartWorkspace/PartWorkspace';
 
@@ -18,7 +20,6 @@ import { ThemeProvider,
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
-
     return (
         <div
         role="tabpanel"
@@ -53,52 +54,49 @@ function a11yProps(index) {
 
 function WorkspaceTabs(){
     const [view, setView] = useState(0);
+
+    const projectParts = useSelector((store) => store.part);
+    const params = useParams();
+    const dispatch = useDispatch();
+
     const handleChange = (event, newView) => {
         setView(newView);
     };
 
+     // dispatch on load to get parts based on project id (params.id)
+     useEffect(() => {
+        console.log('params id', params.id);
+        dispatch({
+            type: 'FETCH_PARTS',
+            payload: params.id
+        })
+
+    }, [])
+
     return (
         <>
             <Box className="boxDefault" sx={{bgcolor: "whitesmoke"}}>
-            <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-                <Tabs
-                value={view}
-                onChange={handleChange}
-                aria-label="part"
-                >
-                <Tab label="Guitar" {...a11yProps(0)} />
-                <Tab label="Bass" {...a11yProps(1)} />
-                <Tab label="Drums" {...a11yProps(2)} />
-                <Tab label="Lyrics" {...a11yProps(3)} />
-                
-                </Tabs>
-            </Box>
-            <TabPanel value={view} index={0}>
-                <PartWorkspace 
-                    stuff={'test1'}
-                />
-            </TabPanel>
-            <TabPanel value={view} index={1}>
-                <PartWorkspace 
-                    stuff={'test2'}
-                />
-            </TabPanel>
-            <TabPanel value={view} index={2}>
-                <PartWorkspace 
-                    stuff={'test3'}
-                />
-            </TabPanel>
-            <TabPanel value={view} index={3}>
-                <PartWorkspace 
-                    stuff={'test4'}
-                />
-            </TabPanel>
-            {/* <TabPanel value={view} index={4}>
-                <ReportReport />
-            </TabPanel>
-            <TabPanel value={view} index={5}>
-                <AllyApplicationReport />
-            </TabPanel> */}
+                <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+                    <Tabs
+                        value={view}
+                        onChange={handleChange}
+                        aria-label="part"
+                        >
+                        {projectParts && projectParts.map((part) =>  
+                            <Tab label={part.part_name} {...a11yProps(`${part.id}`)} />
+                        )} 
+                    </Tabs>
+                   
+                </Box>
+                    
+                {projectParts && projectParts.map((part) =>  
+
+                    <TabPanel value={view} index={part.id}>
+                        <PartWorkspace 
+                            stuff={`${part.notes}`}
+                        />
+                    </TabPanel>
+                )}
             </Box>
         </>
       );

@@ -1,5 +1,4 @@
 import {useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector} from 'react-redux';
 
 import { ThemeProvider, createMuiTheme, ButtonGroup, Button, Typography } from '@mui/material';
@@ -14,18 +13,9 @@ function PartWorkspace({stuff}){
 
     //TODO retrieve from store for the current parts 
 
-    const params = useParams();
     const dispatch = useDispatch();
 
-    // dispatch on load to get parts based on project id (params.id)
-    useEffect(() => {
-        console.log('params id', params.id);
-        dispatch({
-            type: 'FETCH_PARTS',
-            payload: params.id
-        })
-
-    }, [])
+   
 
     return(
         <>
