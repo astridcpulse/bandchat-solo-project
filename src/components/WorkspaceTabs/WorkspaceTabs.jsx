@@ -18,7 +18,7 @@ import { ThemeProvider,
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
-    
+
     return (
         <div
         role="tabpanel"
@@ -70,21 +70,28 @@ function WorkspaceTabs(){
                 <Tab label="Bass" {...a11yProps(1)} />
                 <Tab label="Drums" {...a11yProps(2)} />
                 <Tab label="Lyrics" {...a11yProps(3)} />
-                {/* <Tab label="Problems" {...a11yProps(4)} />
-                <Tab label="Ally Applications" {...a11yProps(5)} /> */}
+                
                 </Tabs>
             </Box>
             <TabPanel value={view} index={0}>
-                <PartWorkspace />
+                <PartWorkspace 
+                    stuff={'test1'}
+                />
             </TabPanel>
             <TabPanel value={view} index={1}>
-                <PartWorkspace />
+                <PartWorkspace 
+                    stuff={'test2'}
+                />
             </TabPanel>
             <TabPanel value={view} index={2}>
-               <PartWorkspace />
+                <PartWorkspace 
+                    stuff={'test3'}
+                />
             </TabPanel>
             <TabPanel value={view} index={3}>
-                <PartWorkspace />
+                <PartWorkspace 
+                    stuff={'test4'}
+                />
             </TabPanel>
             {/* <TabPanel value={view} index={4}>
                 <ReportReport />

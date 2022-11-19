@@ -23,15 +23,7 @@ function AudioRecorder(){
           .catch((err) => console.error('Start error', err));
     }
 
-  // dispatch to saga upon stop recording
-
-    const storeAudio = () => {
-        console.log('blobUrl', {blobUrl})
-        dispatch({ type: 'POST_AUDIO', payload: blobUrl });
-    }
-
   // stop mic recorder function
-
     const stop = () => {
         Recorder
           .stop()
@@ -39,11 +31,12 @@ function AudioRecorder(){
           .then(([buffer, blob]) => {
             setRecordStatus(false);
             console.log('blob', blob);
-            
-            let bu = URL.createObjectURL(blob);
-            console.log('bu', bu);
-            setBlobUrl(bu);
-            storeAudio();
+
+            // dispatch to saga upon stop recording
+            dispatch({ type: 'POST_AUDIO', payload: blob });
+
+
+            setBlobUrl(URL.createObjectURL(blob));
       })
           .catch((e) => console.log(e));
       }
@@ -53,17 +46,24 @@ function AudioRecorder(){
     return(
         <>
             <Button 
-                onClick={start} 
+              onClick={start} 
             >
-                Record
+              Record
             </Button>
 
             <Button 
-                onClick={stop}
+              onClick={stop}
             >
-                Stop
+              Stop
             </Button>
             <audio src={blobUrl} controls/>
+
+            {/* <Button
+              color="error"
+            >
+              delete
+            </Button> */}
+
         </>
     );
 }

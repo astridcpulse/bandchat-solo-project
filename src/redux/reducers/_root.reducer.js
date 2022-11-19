@@ -5,6 +5,7 @@ import audio from './audio.reducer';
 import project from './project.reducer';
 import allUsers from './allUsers.reducer';
 import collaborator from './collaborator.reducer';
+import part from './part.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -18,7 +19,8 @@ const rootReducer = combineReducers({
   // audio, //audio store
   project,
   allUsers,
-  collaborator
+  collaborator,
+  part
 });
 
 export default rootReducer;
