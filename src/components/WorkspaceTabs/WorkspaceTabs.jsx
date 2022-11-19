@@ -76,30 +76,66 @@ function WorkspaceTabs(){
     return (
         <>
             <Box className="boxDefault" sx={{bgcolor: "whitesmoke"}}>
-                <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
                     <Tabs
                         value={view}
                         onChange={handleChange}
                         aria-label="part"
                         >
                         {projectParts && projectParts.map((part) =>  
-                            <Tab label={part.part_name} {...a11yProps(`${part.id}`)} />
+                            <Tab label={part.part_name} {...a11yProps(part.id)} />
                         )} 
                     </Tabs>
                    
-                </Box>
                     
-                {projectParts && projectParts.map((part) =>  
+                {projectParts && projectParts.map((thing) =>  
 
-                    <TabPanel value={view} index={part.id}>
+                    <TabPanel value={view} index={thing.id}>
                         <PartWorkspace 
-                            stuff={`${part.notes}`}
+                            stuff={thing.notes}
                         />
                     </TabPanel>
                 )}
+
+                
             </Box>
         </>
       );
 }
 
 export default WorkspaceTabs;
+
+
+{/* <Box className="boxDefault" sx={{bgcolor: "whitesmoke"}}>
+            <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+                <Tabs
+                value={view}
+                onChange={handleChange}
+                aria-label="part"
+                >
+                <Tab label="Guitar" {...a11yProps(0)} />
+                <Tab label="Bass" {...a11yProps(1)} />
+                <Tab label="Drums" {...a11yProps(2)} />
+                <Tab label="Lyrics" {...a11yProps(3)} />
+                
+                </Tabs>
+            </Box>
+            <TabPanel value={view} index={0}>
+                <PartWorkspace 
+                    stuff={'test1'}
+                />
+            </TabPanel>
+            <TabPanel value={view} index={1}>
+                <PartWorkspace 
+                    stuff={'test2'}
+                />
+            </TabPanel>
+            <TabPanel value={view} index={2}>
+                <PartWorkspace 
+                    stuff={'test3'}
+                />
+            </TabPanel>
+            <TabPanel value={view} index={3}>
+                <PartWorkspace 
+                    stuff={'test4'}
+                />
+            </TabPanel> */}
