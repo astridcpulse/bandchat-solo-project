@@ -10,13 +10,12 @@ function* postPart(action){
 }
 //gets a part, sends it to reducer
 function* fetchParts(action) {
-    console.log('part ACtion payload', action.payload);
-
-        let response = yield axios.get(`/api/parts/${action.payload}`);
+        let response = yield axios.get(`/api/part/${action.payload}`);
         yield put ({
             type: 'SET_PARTS',
             payload: response.data
         });
+        console.log('fetch parts saga response', response.data)
 }
 //watcher function to catch all dispatches
 function* partSaga() {

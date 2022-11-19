@@ -5,12 +5,14 @@ const {
     rejectUnauthenticated,
   } = require('../modules/authentication-middleware');
 
-//gets all projects from database
-//TODO should only get all projects of a particular user id
+
+//gets all parts assigned to a specified project ID
 router.get('/:projectId', rejectUnauthenticated, (req, res) => {
     console.log('req params proj id', req.params.projectId);
-    const sqlText = 
-    pool.query(sqlText)
+    const sqlText = `SELECT * FROM "part_data" 
+                    WHERE "project_id" = $1;`
+    
+    pool.query(sqlText, [req.params.projectId])
         .then((dbRes) => {  
             res.send(dbRes.rows);
         })
