@@ -2,6 +2,9 @@ import {
     TextField
 } from '@mui/material';
 
+
+
+
 function Notes({part}){
 
     return(
