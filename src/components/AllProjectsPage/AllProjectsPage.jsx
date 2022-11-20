@@ -61,6 +61,7 @@ function AllProjectsPage() {
       >
         Create New Project
       </Button>
+      
       {user.id && (
       <ul>
       {projects.map(project => 

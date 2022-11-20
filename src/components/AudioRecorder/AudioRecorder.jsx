@@ -3,7 +3,7 @@ import { useDispatch, useSelector} from 'react-redux';
 
 import { Button } from '@mui/material';
 
-function AudioRecorder({sound}){
+function AudioRecorder({part}){
     const dispatch = useDispatch();
     const MicRecorder = require('mic-recorder-to-mp3');
     const Recorder = new MicRecorder({ bitRate: 128});
@@ -22,7 +22,7 @@ function AudioRecorder({sound}){
           })
           .catch((err) => console.error('Start error', err));
     }
-
+console.log('part', part.id)
   // stop mic recorder function
     const stop = () => {
         Recorder

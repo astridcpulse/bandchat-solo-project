@@ -2,7 +2,7 @@ import { put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 
 function* postAudio(action){
-    console.log('action payload', action);
+    console.log('action payload audio', action.payload);
     
         yield axios.post('/api/audio', action.payload)
     //  catch (err){
