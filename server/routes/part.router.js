@@ -10,7 +10,7 @@ const {
 router.get('/:projectId', rejectUnauthenticated, (req, res) => {
     console.log('req params proj id', req.params.projectId);
     const sqlText = `SELECT * FROM "part_data" 
-                    WHERE "project_id" = $1;`
+                    WHERE "project_id" = $1;`;
     
     pool.query(sqlText, [req.params.projectId])
         .then((dbRes) => {  

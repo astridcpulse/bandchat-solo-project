@@ -3,7 +3,7 @@ import { useDispatch, useSelector} from 'react-redux';
 
 import { Button } from '@mui/material';
 
-function AudioRecorder(){
+function AudioRecorder({sound}){
     const dispatch = useDispatch();
     const MicRecorder = require('mic-recorder-to-mp3');
     const Recorder = new MicRecorder({ bitRate: 128});
@@ -33,7 +33,7 @@ function AudioRecorder(){
             console.log('blob', blob);
 
             // dispatch to saga upon stop recording
-            dispatch({ type: 'POST_AUDIO', payload: blob });
+            dispatch({ type: 'POST_AUDIO', payload: {blob: blob, partId: part.id }});
 
 
             setBlobUrl(URL.createObjectURL(blob));

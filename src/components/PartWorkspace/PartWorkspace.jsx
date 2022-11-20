@@ -5,20 +5,17 @@ import { ThemeProvider, createMuiTheme, ButtonGroup, Button, Typography } from '
 
 import AudioRecorder from '../AudioRecorder/AudioRecorder';
 
-function PartWorkspace({stuff}){
+function PartWorkspace({part}){
     //local state to display or take away the tool elements from the workspace
     const [recordStatus, setRecordStatus] = useState(false);
     const [notesStatus, setNoteStatus] = useState(false);
     const [chordsStatus, setChordStatus] = useState(false);
 
-    //TODO retrieve from store for the current parts 
 
-    const dispatch = useDispatch();
 
-   
 
     return(
-        <>
+        <div>
             <ButtonGroup size='small' color='secondary'>
                 <Button> 
                     Notes 
@@ -35,18 +32,19 @@ function PartWorkspace({stuff}){
                 </Button>
             </ButtonGroup>
 
-            <h3>{stuff}</h3>
             {recordStatus 
                 && 
             <div> 
-                <AudioRecorder /> 
+                <AudioRecorder 
+                    sound={part.sound}
+                /> 
                 <Button 
                     color="error"
                     onClick={() => setRecordStatus(false)}
                 >
                 Delete</Button> 
             </div>}            
-        </>
+        </div>
     )
 }
 

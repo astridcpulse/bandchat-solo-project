@@ -13,49 +13,50 @@ import { ThemeProvider,
     Typography,
     Tab,
     Tabs, 
-    Box
+    Box,
+    Card,
+    Stack
     } from '@mui/material';
 
 
 
-function TabPanel(props) {
-    const { children, value, index, ...other } = props;
-    return (
-        <div
-        role="tabpanel"
-        hidden={value !== index}
-        id={`simple-tabpanel-${index}`}
-        aria-labelledby={`simple-tab-${index}`}
-        {...other}
-        >
-        {value === index && (
-            <Box sx={{ p: 3 }}>
-            <Typography>{children}</Typography>
-            </Box>
-        )}
-        </div>
-    );
-} 
+// function TabPanel(props) {
+//     const { children, value, index, ...other } = props;
+//     return (
+//         <div
+//         role="tabpanel"
+//         hidden={value !== index}
+//         id={`simple-tabpanel-${index}`}
+//         aria-labelledby={`simple-tab-${index}`}
+//         {...other}
+//         >
+//         {value === index && (
+//             <Box sx={{ p: 3 }}>
+//             <Typography>{children}</Typography>
+//             </Box>
+//         )}
+//         </div>
+//     );
+// } 
 
-TabPanel.propTypes = {
-    children: PropTypes.node,
-    index: PropTypes.number.isRequired,
-    value: PropTypes.number.isRequired,
-};
+// TabPanel.propTypes = {
+//     children: PropTypes.node,
+//     index: PropTypes.number.isRequired,
+//     value: PropTypes.number.isRequired,
+// };
   
-function a11yProps(index) {
-    return {
-      id: `simple-tab-${index}`,
-      "aria-controls": `simple-tabpanel-${index}`,
-    };
-}
+// function a11yProps(index) {
+//     return {
+//       id: `simple-tab-${index}`,
+//       "aria-controls": `simple-tabpanel-${index}`,
+//     };
+// }
   
 
 
 function WorkspaceTabs(){
     const [view, setView] = useState(0);
 
-    const projectParts = useSelector((store) => store.part);
     const params = useParams();
     const dispatch = useDispatch();
 
@@ -73,9 +74,38 @@ function WorkspaceTabs(){
 
     }, [])
 
+    const projectParts = useSelector((store) => store.part);
+
+
     return (
         <>
-            <Box className="boxDefault" sx={{bgcolor: "whitesmoke"}}>
+            <Stack
+                direction="column"
+                sx={{bgcolor: "whitesmoke", m:2 }}
+            >
+                {projectParts && projectParts.map((part) =>  
+
+                <Card
+                    sx={{ borderBottom: 1, 
+                        borderColor: "divider",
+                        p:10,
+                        m:2,
+                        display:"flex" 
+                    }}
+                >
+                    {part.part_name}
+                    <PartWorkspace
+                        justifyContent="end"
+                        sx={{marginLeft: "auto"}}
+                        part={part}
+                    />
+                    
+                </Card>
+                )}
+            </Stack>
+
+
+            {/* <Box className="boxDefault" sx={{bgcolor: "whitesmoke"}}>
                     <Tabs
                         value={view}
                         onChange={handleChange}
@@ -87,17 +117,18 @@ function WorkspaceTabs(){
                     </Tabs>
                    
                     
-                {projectParts && projectParts.map((thing) =>  
-
-                    <TabPanel value={view} index={thing.id}>
+                {projectParts && projectParts.map((part) =>  {
+                    return(
+                    <TabPanel value={view} index={part.id}>
                         <PartWorkspace 
-                            stuff={thing.notes}
+                            stuff={part}
                         />
                     </TabPanel>
+                    )}   
                 )}
+            </Box> */}
 
-                
-            </Box>
+
         </>
       );
 }
