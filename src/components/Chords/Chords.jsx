@@ -8,13 +8,15 @@ import {
     MenuItem,
     ListSubheader,
     FormControl,
-    Select
+    Select,
+    Stack,
+    Box
 } from '@mui/material';
 
 function Chords ({part}){
     const [noteVal, setNoteVal] = useState();
     const [mode, setMode] = useState('');
-
+    const [currentKey, setCurrentKey] = useState([])
     //couldnt figure out a better way to do this 🤪🫠
     // start looping from first item that matches the chord input
 
@@ -66,50 +68,90 @@ function Chords ({part}){
         for(let notes of indexArray){
             finalArray.push(allNotesArray[notes]);
         }
+        //final Array now has all notes in the scale
         console.log('final array', finalArray);
-        return finalArray;
+        if(mode === 'major'){
+            finalArray[1] += 'm';
+            finalArray[2] += 'm';
+            finalArray[5] += 'm';
+            finalArray[6] += 'dim';
+
+        } else if(mode ==='minor'){
+            finalArray[0] += 'm';
+            finalArray[1] += 'dim';
+            finalArray[3] += 'm';
+            finalArray[4] += 'm';
+        }
+        //final array now as all chords for a given key signature
+        setCurrentKey(finalArray);
+        console.log('final array ck', currentKey);
+
     }
 
     return(
 
     <div>
         <h5>KEY: </h5>
-      <FormControl sx={{ m: 1, minWidth: 130 }}>
-        <InputLabel> Root Chord </InputLabel>
-        <Select 
-            defaultValue="" 
-            id="note select" 
-            onChange={(evt) => setNoteVal(evt.target.value)}
-        >
-            <MenuItem value="" >
-                <em> none </em>
-            </MenuItem>
-            {allNotes.map((note) => 
-                <MenuItem key={note} value={allNotes.indexOf(note)}> {note}</MenuItem>
-            )}
-        </Select>
-      </FormControl>
+        <FormControl sx={{ m: 1, minWidth: 130 }}>
+            <InputLabel> Root Chord </InputLabel>
+            <Select 
+                defaultValue="" 
+                id="note select" 
+                onChange={(evt) => setNoteVal(evt.target.value)}
+            >
+                <MenuItem value="" >
+                    <em> none </em>
+                </MenuItem>
+                {allNotes.map((note) => 
+                    <MenuItem key={note} value={allNotes.indexOf(note)}> {note}</MenuItem>
+                )}
+            </Select>
+        </FormControl>
       
-      <FormControl sx={{ m: 1, minWidth: 140 }}>
-        <InputLabel> Major/Minor </InputLabel>
-        <Select 
-            defaultValue="" 
-            id="mode select" 
-            onChange={(evt) => setMode(evt.target.value)}
+        <FormControl sx={{ m: 1, minWidth: 140 }}>
+            <InputLabel> Major/Minor </InputLabel>
+            <Select 
+                defaultValue="" 
+                id="mode select" 
+                onChange={(evt) => setMode(evt.target.value)}
+            >
+            <MenuItem value="">
+                <em>None</em>
+            </MenuItem>
+            <MenuItem value={'major'}> Major </MenuItem>
+            <MenuItem value={'minor'}> Minor </MenuItem>
+            </Select>
+        </FormControl>
+        <Stack
+            direction="column"
+            sx={{bgcolor: "whitesmoke", m:2 }}
         >
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
-          <MenuItem value={'major'}> Major </MenuItem>
-          <MenuItem value={'minor'}> Minor </MenuItem>
-        </Select>
-      </FormControl>
-
-      <Button 
-        variant='contained'
-        onClick={() => keyFinder(noteVal, mode)}
+        <Button 
+            variant='contained'
+            onClick={() => keyFinder(noteVal, mode)}
         > 
-        display chords in key </Button>
+            display chords in key
+        </Button>
+        
+        { currentKey 
+            &&
+        <Box
+            sx={{m:2}}
+        >
+            {currentKey.map((chord, index) =>
+               <h4>{majorKey[index]} :  {chord}</h4>
+            )}
+            
+        </Box>
+
+        }
+        <TextField
+                sx={{m: 2}}
+                label='chords/notation'
+                variant="outlined"
+                multiline
+            />
+        </Stack>
     </div>
   );
 
