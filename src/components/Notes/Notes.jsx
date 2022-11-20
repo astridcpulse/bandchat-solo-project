@@ -8,7 +8,7 @@ function Notes({part}){
         <>
             <TextField
                 variant="outlined"
-
+                multiline
             />
         </>
     );
