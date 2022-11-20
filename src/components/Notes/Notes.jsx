@@ -7,6 +7,7 @@ function Notes({part}){
     return(
         <>
             <TextField
+                label='notes'
                 variant="outlined"
                 multiline
             />
