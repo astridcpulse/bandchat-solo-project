@@ -29,7 +29,6 @@ const {
 });
 
 router.delete('/:id', rejectUnauthenticated, (req, res) => {
-    console.log('params for the part id', req.params.id);
 
     const sqlText = `UPDATE "part_data"
                     SET "notes" = NULL
@@ -44,4 +43,5 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
             res.sendStatus(500);
         });
 });
+
 module.exports = router;

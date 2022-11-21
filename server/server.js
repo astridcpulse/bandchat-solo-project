@@ -36,7 +36,7 @@ app.use('/api/allUsers', allUsersRouter);
 app.use('/api/collaborators', collaboratorsRouter);
 app.use('/api/part', partRouter);
 app.use('/api/note/', noteRouter);
-app.use('/api/chord', chordRouter);
+app.use('/api/chord/', chordRouter);
 // Serve static files
 app.use(express.static('build'));
 

@@ -6,7 +6,7 @@ const {
   } = require('../modules/authentication-middleware');
 
 
-  router.put('/', rejectUnauthenticated, (req, res) => {
+router.put('/', rejectUnauthenticated, (req, res) => {
     console.log('req body', req.body.info)
 
     const sqlText = `UPDATE "part_data"
@@ -28,6 +28,25 @@ const {
         })
         .catch((dbErr) => {
             console.error('error in POST note', dbErr)
+            res.sendStatus(500);
+        });
+});
+
+router.delete('/:id', rejectUnauthenticated, (req, res) => {
+    console.log('params for the part id ', req.params.id);
+
+    const sqlText = `UPDATE "part_data"
+                    SET "chord_value" = NULL,
+                        "chord_text" = NULL,
+                        "chord_mode" = NULL
+                    WHERE "part_data".id = $1;`;
+
+    pool.query(sqlText, [req.params.id])
+        .then((dbRes) => {  
+            res.sendStatus(200);
+        })
+        .catch((dbErr) => {
+            console.error('error in DELETE note', dbErr)
             res.sendStatus(500);
         });
 });

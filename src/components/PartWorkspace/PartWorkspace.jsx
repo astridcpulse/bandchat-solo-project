@@ -32,7 +32,10 @@ function PartWorkspace({part}){
         setChordsStatus(false);
         dispatch({
             type: 'DELETE_CHORD',
-            payload: part.id
+            payload: {
+                partId: part.id,
+                projectId: params.id,
+            }
         });
     }
 

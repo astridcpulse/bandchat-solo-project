@@ -9,9 +9,15 @@ function* postChord(action){
     yield put({type:'FETCH_PARTS', payload: action.payload.projectId})
 }
 
+function* deleteChord(action){
+    yield axios.delete(`/api/chord/${action.payload.partId}`);
+
+    yield put({type:'FETCH_PARTS', payload: action.payload.projectId})
+}
+
 function* chordSaga() {
     yield takeEvery('POST_CHORD', postChord);
-    // yield takeEvery('FETCH_chord', fetchchord)
+    yield takeEvery('DELETE_CHORD', deleteChord)
 }
 
 export default chordSaga;
