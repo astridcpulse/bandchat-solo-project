@@ -111,7 +111,7 @@ function WorkspaceTabs(){
                         part={part}
                     />
                     <Button
-                        sx={{size: 'small'}}
+                        // sx={{size: 'small'}}
                         value={part.id}
                         variant="contained"
                         color="error"

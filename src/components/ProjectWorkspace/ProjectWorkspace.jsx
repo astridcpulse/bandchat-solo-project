@@ -46,6 +46,18 @@ function ProjectWorkspace(){
         {label: 'Ohna'}
     ];
 
+    const handleCreatePart = (name) => {
+        event.preventDefault();
+        dispatch({
+            type: 'POST_PART',
+            payload: {
+                name: name,
+                projectId: params.id
+            }
+        })
+
+    }
+
     return (
         <>
             <Typography 
@@ -67,12 +79,24 @@ function ProjectWorkspace(){
                 renderInput={(params) => <TextField {...params} label="Helpers" />}
             />
 
-            <Button
-                variant="contained"
-            > 
-                + part
-            </Button>
 
+            <form
+                onSubmit={(evt) => handleCreatePart(evt.target.partname.value)}
+            >
+                <TextField
+                    name="partname"
+                    placeholder='new part name'
+
+                >
+                    
+                </TextField>
+                <Button
+                    type='submit'
+                    variant="contained" 
+                > 
+                    + part
+                </Button>
+            </form>
             <WorkspaceTabs />
 
             

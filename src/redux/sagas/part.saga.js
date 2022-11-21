@@ -3,10 +3,10 @@ import axios from 'axios';
 
 //posts a part
 function* postPart(action){
-    yield axios.post('/api/parts', {name: action.payload})
+    yield axios.post('/api/part', action.payload )
 
     //gets the new parts, now with posted part
-    yield put({type:'FETCH_PARTS'})
+    yield put({type:'FETCH_PARTS', payload: action.payload.projectId})
 }
 //gets a part, sends it to reducer
 function* fetchParts(action) {

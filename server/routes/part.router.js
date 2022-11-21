@@ -22,23 +22,30 @@ router.get('/:projectId', rejectUnauthenticated, (req, res) => {
 });
 
 
-// //post a new project to the database
-// router.post('/', rejectUnauthenticated, (req, res) => {
-//     console.log('req user', req.user)
-//     // req.user.id
-//     const sqlText = `INSERT INTO "project_data" ("project_name") VALUES ($1);`
-//     const sqlParams = [req.body.name];
+//post a new part to the database
+router.post('/', rejectUnauthenticated, (req, res) => {
+    console.log('req body', req.body)
+    // req.user.id
+    const sqlText = `INSERT INTO "part_data" ("part_name", "notes", "chord_value", "chord_mode", "chord_text", "sound", "project_id") 
+                    VALUES ($1, NULL, NULL, NULL, NULL, NULL, $2);`
 
-//     pool.query(sqlText, sqlParams)
-//         .then((dbRes) => {
-//             console.log('success in postProject');
-//             res.sendStatus(200);
-//         })
-//         .catch((err) => {
-//             console.error('error in post', err);
-//             res.sendStatus(500);
-//         })
-// });
+    const sqlParams = [
+                        req.body.name,
+                        req.body.projectId
+                        ];
+
+    pool.query(sqlText, sqlParams)
+        .then((dbRes) => {
+            console.log('success in postPart');
+            res.sendStatus(200);
+        })
+        .catch((err) => {
+            console.error('error in post part', err);
+            res.sendStatus(500);
+        })
+});
+
+
 router.delete('/:id', rejectUnauthenticated, (req, res) => {
     console.log('req.params id', req.params.id);
 
