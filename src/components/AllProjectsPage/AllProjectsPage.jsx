@@ -3,7 +3,16 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 import { useDispatch, useSelector} from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import AddCollaborators from '../AddCollaborators/AddCollaborators'
-import { Button, OutlinedInput, Autocomplete, TextField } from '@mui/material';
+import { 
+        Button,
+        OutlinedInput,
+        Autocomplete,
+        TextField,
+        Box,
+        Stack,
+        Card,
+        CardActionArea
+      } from '@mui/material';
 
 
 function AllProjectsPage() {
@@ -63,20 +72,33 @@ function AllProjectsPage() {
       </Button>
       
       {user.id && (
-      <ul>
+      <Box>
       {projects.map(project => 
-        <li key={project.id}>
-          
+      
+        <Card 
+          sx={{width: 500, m: 1}}
+          key={project.id}
+        >
+          <CardActionArea>
             <h3 onClick={() => history.push(`/workspace/${project.id}`)}
             >{project.project_name}</h3>
+          </CardActionArea>
             <AddCollaborators 
               projectId={project.id}
             />
+            <Button
+              variant="contained"
+              color="error"
+              onClick={() => dispatch({type: 'DELETE_PROJECT', payload: project.id})}
+              >
+              Delete Project
+            </Button>
           
           {/* TODO add input autocomplete field to add all users to the project */}
-        </li>
+        </Card>
+        
         )}
-      </ul>
+      </Box>
       )}
 
       {/* TODO when all projects are listed out, pressing on one will push history to project workplace page */}

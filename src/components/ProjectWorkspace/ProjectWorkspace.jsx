@@ -46,12 +46,14 @@ function ProjectWorkspace(){
         {label: 'Ohna'}
     ];
 
-    const handleCreatePart = (name) => {
+    const handleCreatePart = (event) => {
+        console.log('the thing with noelani', event.target.partname.value)
+
         event.preventDefault();
         dispatch({
             type: 'POST_PART',
             payload: {
-                name: name,
+                name: event.target.partname.value,
                 projectId: params.id
             }
         })
@@ -81,15 +83,13 @@ function ProjectWorkspace(){
 
 
             <form
-                onSubmit={(evt) => handleCreatePart(evt.target.partname.value)}
+                onSubmit={(evt) => handleCreatePart(evt)}
             >
                 <TextField
                     name="partname"
                     placeholder='new part name'
-
-                >
-                    
-                </TextField>
+                />
+                
                 <Button
                     type='submit'
                     variant="contained" 

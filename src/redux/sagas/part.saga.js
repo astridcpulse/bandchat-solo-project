@@ -19,12 +19,12 @@ function* fetchParts(action) {
 }
 
 //update a part based on category, value and partId
-function* updatePart(action){
-    yield axios.put('/api/part', action.payload);
+// function* updatePart(action){
+//     yield axios.put('/api/part', action.payload);
 
-    yield put({type:'FETCH_PARTS', payload: action.payload.projectId})
+//     yield put({type:'FETCH_PARTS', payload: action.payload.projectId})
 
-}
+// }
 
 function* deletePart(action){
     yield axios.delete(`/api/part/${action.payload.partId}`);
