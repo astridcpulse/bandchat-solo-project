@@ -17,6 +17,23 @@ function PartWorkspace({part}){
     const dispatch = useDispatch();
     const params = useParams();
 
+
+    useEffect(() => {
+        checkExists()
+    }, [])
+
+
+    const checkExists = () => {
+        if( part.notes){
+            setNotesStatus(true)
+        }
+
+        if( part.chord_value){
+            setChordsStatus(true)
+        } 
+    }
+
+
     const handleDeleteNotes = () => {
         setNotesStatus(false);
         dispatch({
