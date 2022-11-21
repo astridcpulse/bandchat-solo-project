@@ -77,6 +77,17 @@ function WorkspaceTabs(){
     const projectParts = useSelector((store) => store.part);
 
 
+    const handleDeletePart = (partId) => {
+        dispatch({
+            type: 'DELETE_PART',
+            payload: { 
+                partId: partId,
+                projectId: params.id
+            }
+        })
+
+    }
+    
     return (
         <>
             <Stack
@@ -99,7 +110,15 @@ function WorkspaceTabs(){
                         sx={{marginLeft: "auto"}}
                         part={part}
                     />
-                    
+                    <Button
+                        sx={{size: 'small'}}
+                        value={part.id}
+                        variant="contained"
+                        color="error"
+                        onClick={(evt) => handleDeletePart(evt.target.value)}
+                    >
+                    Delete Part
+                    </Button>
                 </Card>
                 )}
             </Stack>

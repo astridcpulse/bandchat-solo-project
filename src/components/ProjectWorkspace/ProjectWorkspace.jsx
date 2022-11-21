@@ -73,13 +73,6 @@ function ProjectWorkspace(){
                 + part
             </Button>
 
-            <Button
-                variant="contained"
-                color="error"
-            >
-                Delete Part
-            </Button>
-
             <WorkspaceTabs />
 
             

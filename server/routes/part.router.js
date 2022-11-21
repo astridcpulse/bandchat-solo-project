@@ -39,5 +39,20 @@ router.get('/:projectId', rejectUnauthenticated, (req, res) => {
 //             res.sendStatus(500);
 //         })
 // });
+router.delete('/:id', rejectUnauthenticated, (req, res) => {
+    console.log('req.params id', req.params.id);
+
+    const sqlText = `DELETE FROM "part_data"
+                    WHERE "part_data".id = $1;`;
+
+    pool.query(sqlText, [req.params.id])
+        .then((dbRes) => {  
+            res.sendStatus(200);
+        })
+        .catch((dbErr) => {
+            console.error('error in DELETE note', dbErr)
+            res.sendStatus(500);
+        });
+});
 
 module.exports = router;

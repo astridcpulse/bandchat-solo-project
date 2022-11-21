@@ -19,7 +19,7 @@ function Notes({part}){
     return(
         <form>
             <TextField
-                defaultValue={part.notes}
+                defaultValue={part.notes = null ? '' : part.notes}
                 label='notes'
                 variant="outlined"
                 multiline

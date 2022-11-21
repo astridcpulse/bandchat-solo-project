@@ -20,8 +20,14 @@ function* fetchParts(action) {
 
 //update a part based on category, value and partId
 function* updatePart(action){
-    console.log('update part', action.payload);
     yield axios.put('/api/part', action.payload);
+
+    yield put({type:'FETCH_PARTS', payload: action.payload.projectId})
+
+}
+
+function* deletePart(action){
+    yield axios.delete(`/api/part/${action.payload.partId}`);
 
     yield put({type:'FETCH_PARTS', payload: action.payload.projectId})
 
@@ -30,6 +36,7 @@ function* updatePart(action){
 function* partSaga() {
     yield takeEvery('POST_PART', postPart);
     yield takeEvery('FETCH_PARTS', fetchParts);
+    yield takeEvery('DELETE_PART', deletePart)
 }
 
 export default partSaga;
