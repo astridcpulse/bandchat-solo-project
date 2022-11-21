@@ -8,6 +8,7 @@ import allUsersSaga from './allUsers.saga';
 import collaboratorSaga from './collaborator.saga';
 import partSaga from './part.saga';
 import noteSaga from './note.saga';
+import chordSaga from './chord.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -26,6 +27,7 @@ export default function* rootSaga() {
     allUsersSaga(),
     collaboratorSaga(),
     partSaga(),
-    noteSaga()
+    noteSaga(),
+    chordSaga()
   ]);
 }

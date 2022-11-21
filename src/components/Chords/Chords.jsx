@@ -17,6 +17,10 @@ function Chords ({part}){
     const [noteVal, setNoteVal] = useState();
     const [mode, setMode] = useState('');
     const [currentKey, setCurrentKey] = useState([])
+
+    const dispatch = useDispatch();
+
+
     //couldnt figure out a better way to do this 🤪🫠
     // start looping from first item that matches the chord input
 
