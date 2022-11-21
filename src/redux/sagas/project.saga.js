@@ -3,7 +3,6 @@ import axios from 'axios';
 
 //posts a project
 function* postProject(action){
-    console.log('action payload', action.payload);
     yield axios.post('/api/projects', {name: action.payload})
 
     //gets the new projects, now with posted project

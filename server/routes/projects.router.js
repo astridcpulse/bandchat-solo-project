@@ -23,7 +23,6 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 
 //post a new project to the database
 router.post('/', rejectUnauthenticated, (req, res) => {
-    console.log('req user', req.user)
     // req.user.id
     const sqlText = `INSERT INTO "project_data" ("project_name") VALUES ($1);`
     const sqlParams = [req.body.name];

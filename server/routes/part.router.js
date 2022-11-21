@@ -8,7 +8,6 @@ const {
 
 //gets all parts assigned to a specified project ID
 router.get('/:projectId', rejectUnauthenticated, (req, res) => {
-    console.log('req params proj id', req.params.projectId);
     const sqlText = `SELECT * FROM "part_data" 
                     WHERE "project_id" = $1;`;
     

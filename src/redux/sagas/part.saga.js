@@ -17,6 +17,15 @@ function* fetchParts(action) {
         });
         console.log('fetch parts saga response', response.data)
 }
+
+//update a part based on category, value and partId
+function* updatePart(action){
+    console.log('update part', action.payload);
+    yield axios.put('/api/part', action.payload);
+
+    yield put({type:'FETCH_PARTS', payload: action.payload.projectId})
+
+}
 //watcher function to catch all dispatches
 function* partSaga() {
     yield takeEvery('POST_PART', postPart);

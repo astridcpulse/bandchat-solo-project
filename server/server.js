@@ -14,6 +14,7 @@ const projectsRouter = require('./routes/projects.router');
 const allUsersRouter = require('./routes/allUsers.router');
 const collaboratorsRouter = require('./routes/collaborators.router');
 const partRouter = require('./routes/part.router');
+const noteRouter = require('./routes/note.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -33,7 +34,8 @@ app.use('/api/audio', audioRouter);
 app.use('/api/projects', projectsRouter);
 app.use('/api/allUsers', allUsersRouter);
 app.use('/api/collaborators', collaboratorsRouter);
-app.use('/api/part/', partRouter);
+app.use('/api/part', partRouter);
+app.use('/api/note/', noteRouter);
 // Serve static files
 app.use(express.static('build'));
 
