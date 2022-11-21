@@ -7,14 +7,14 @@ const {
 
 
   router.put('/', rejectUnauthenticated, (req, res) => {
-    console.log('req body', req.body)
+    console.log('req body', req.body.info)
 
     const sqlText = `UPDATE "part_data"
                     SET "key" = $1
                     WHERE "part_data".id = $2;`;
                     
     const sqlParams = [ 
-                        req.body.value, 
+                        req.body.info,
                         req.body.partId
                         ]
 

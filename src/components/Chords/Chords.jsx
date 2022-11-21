@@ -1,5 +1,6 @@
 import { useDispatch, useSelector} from 'react-redux';
 import {useEffect, useState } from 'react';
+import {useParams} from 'react-router-dom';
 
 import {
     TextField,
@@ -16,8 +17,10 @@ import {
 function Chords ({part}){
     const [noteVal, setNoteVal] = useState();
     const [mode, setMode] = useState('');
+    const [text, setText] = useState('');
     const [currentKey, setCurrentKey] = useState([])
 
+    const params = useParams();
     const dispatch = useDispatch();
 
 
@@ -92,10 +95,27 @@ function Chords ({part}){
 
     }
 
+    function handleSubmit(){
+        dispatch({
+            type: 'POST_CHORD',
+            payload: {
+                info: {
+                    noteVal: noteVal,
+                    mode: mode,
+                    text: text,
+                },
+                partId: part.id,
+                projectId: params.id
+            }
+        })
+    }
+
+    console.log('part', part);
     return(
 
     <div>
         <h5>KEY: </h5>
+        <form onSubmit={handleSubmit}>
         <FormControl sx={{ m: 1, minWidth: 130 }}>
             <InputLabel> Root Chord </InputLabel>
             <Select 
@@ -154,8 +174,16 @@ function Chords ({part}){
                 label='chords/notation'
                 variant="outlined"
                 multiline
+                onChange={(evt) => setText(evt.target.value)}
             />
         </Stack>
+        <Button
+            variant='contained'
+            type='submit'
+        >
+            Save
+        </Button>
+        </form>
     </div>
   );
 
