@@ -100,9 +100,9 @@ function Chords ({part}){
             type: 'POST_CHORD',
             payload: {
                 info: {
-                    noteVal: noteVal,
-                    mode: mode,
-                    text: text,
+                     noteVal: noteVal,
+                     mode: mode,
+                     text: text,
                 },
                 partId: part.id,
                 projectId: params.id
@@ -119,7 +119,7 @@ function Chords ({part}){
         <FormControl sx={{ m: 1, minWidth: 130 }}>
             <InputLabel> Root Chord </InputLabel>
             <Select 
-                defaultValue="" 
+                defaultValue={part.chord_value}
                 id="note select" 
                 onChange={(evt) => setNoteVal(evt.target.value)}
             >
@@ -135,7 +135,7 @@ function Chords ({part}){
         <FormControl sx={{ m: 1, minWidth: 140 }}>
             <InputLabel> Major/Minor </InputLabel>
             <Select 
-                defaultValue="" 
+                defaultValue={part.chord_mode} 
                 id="mode select" 
                 onChange={(evt) => setMode(evt.target.value)}
             >
@@ -171,6 +171,7 @@ function Chords ({part}){
         }
         <TextField
                 sx={{m: 2}}
+                defaultValue={part.chord_text}
                 label='chords/notation'
                 variant="outlined"
                 multiline

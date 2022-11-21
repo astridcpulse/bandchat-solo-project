@@ -1,5 +1,6 @@
 import {useEffect, useState } from 'react';
 import { useDispatch, useSelector} from 'react-redux';
+import {useParams} from 'react-router-dom';
 
 import { ThemeProvider, createMuiTheme, ButtonGroup, Button, Typography } from '@mui/material';
 
@@ -13,6 +14,35 @@ function PartWorkspace({part}){
     const [notesStatus, setNotesStatus] = useState(false);
     const [chordsStatus, setChordsStatus] = useState(false);
 
+    const dispatch = useDispatch();
+    const params = useParams();
+
+    const handleDeleteNotes = () => {
+        setNotesStatus(false);
+        dispatch({
+            type: 'DELETE_NOTE',
+            payload: {
+                partId: part.id,
+                projectId: params.id,
+            }
+        });
+    }
+
+    const handleDeleteChords = () => {
+        setChordsStatus(false);
+        dispatch({
+            type: 'DELETE_CHORD',
+            payload: part.id
+        });
+    }
+
+    const handleDeleteRecord =() => {
+        setRecordStatus(false);
+        dispatch({
+            type: 'DELETE_RECORD',
+            payload: part.id
+        });
+    }
 
     return(
         <div>
@@ -44,7 +74,7 @@ function PartWorkspace({part}){
                 /> 
                 <Button 
                     color="error"
-                    onClick={() => setNotesStatus(false)}
+                    onClick={() => handleDeleteNotes()}
                 >
                 Delete</Button> 
             </div>}  
@@ -57,7 +87,7 @@ function PartWorkspace({part}){
                 /> 
                 <Button 
                     color="error"
-                    onClick={() => setChordsStatus(false)}
+                    onClick={() => handleDeleteChords()}
                 >
                 Delete</Button> 
             </div>}  
@@ -70,7 +100,7 @@ function PartWorkspace({part}){
                 /> 
                 <Button 
                     color="error"
-                    onClick={() => setRecordStatus(false)}
+                    onClick={() => handleDeleteRecord()}
                 >
                 Delete</Button> 
             </div>}            

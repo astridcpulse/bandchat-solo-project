@@ -10,11 +10,15 @@ const {
     console.log('req body', req.body.info)
 
     const sqlText = `UPDATE "part_data"
-                    SET "key" = $1
-                    WHERE "part_data".id = $2;`;
+                    SET "chord_value" = $1,
+                        "chord_mode" = $2,
+                        "chord_text" = $3
+                    WHERE "part_data".id = $4;`;
                     
     const sqlParams = [ 
-                        req.body.info,
+                        req.body.info.noteVal,
+                        req.body.info.mode,
+                        req.body.info.text,
                         req.body.partId
                         ]
 
