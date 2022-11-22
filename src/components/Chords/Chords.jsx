@@ -96,6 +96,7 @@ function Chords ({part}){
     }
 
     function handleSubmit(){
+        event.preventDefault();
         dispatch({
             type: 'POST_CHORD',
             payload: {

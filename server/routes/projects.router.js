@@ -41,21 +41,22 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 // delete a project based on id
 router.delete('/:id', rejectUnauthenticated, (req, res) => {
     console.log('req.params id', req.params.id);
+
     // delete project data from the part_data table
     const sqlText1 = `DELETE FROM "part_data"
                         WHERE "project_id" = $1;`
-
     pool.query(sqlText1, [req.params.id])
         .then((dbRes) => {  
+
         // delete project data from the user_project_data table
             const sqlText2 = `DELETE FROM "user_project_data"
                     WHERE "project_id" = $1;`;
             pool.query(sqlText2, [req.params.id])
                 .then((dbRes) => {  
-                 // delete project data from the project_data
-                 const sqlText3 = `DELETE FROM "project_data"
-                 WHERE "project_data".id = $1;`;
 
+                 // delete project data from the project_data
+                    const sqlText3 = `DELETE FROM "project_data"
+                                    WHERE "project_data".id = $1;`;
                     pool.query(sqlText3, [req.params.id])
                         .then((dbRes) => {  
                             res.sendStatus(200);
@@ -65,14 +66,13 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
                             res.sendStatus(500);
                         });
 
-
                     // res.sendStatus(200);
                 })
                 .catch((dbErr) => {
                     console.error('error in DELETE note', dbErr)
                     res.sendStatus(500);
                 });
-        // send status
+
             // res.sendStatus(200);
         })
         .catch((dbErr) => {
