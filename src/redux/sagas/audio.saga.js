@@ -7,15 +7,19 @@ function* uploadAudio(action){
     console.log(' inside upload Audio saga', action.payload)
     let formData = new FormData();
 
-    // formData.append('uploaded_audio', action.payload[0]);
+    formData.append('uploaded_audio', action.payload.blob);
+
+    yield axios.put(`api/audio/${action.payload.partId}`, formData)
 }
 
 function* fetchAudio() {
-        let response = yield axios.get('/api/audio');
-        yield put ({
-            type: 'SAVE_AUDIO',
-            payload: response.data
-        })
+  
+
+    let response = yield axios.get('/api/audio');
+    yield put ({
+        type: 'SAVE_AUDIO',
+        payload: response.data
+    })
     
 }
 

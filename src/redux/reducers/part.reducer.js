@@ -53,12 +53,13 @@ const partReducer = (state = [], action) => {
           return part;
         }
     })
-  } else if (action.type === 'EDIT_PART_SOUND'){
+  } else if (action.type === 'EDIT_PART_AUDIO'){
+    console.log('edit part audio reducer', action.payload);
     return state.map((part) => {
       if(action.payload.partId === part.id){
         return{
           ...part,
-          sound: action.payload.chord_text,
+          sound: action.payload,
         }
       } else{
           return part;
