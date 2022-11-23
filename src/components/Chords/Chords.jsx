@@ -15,11 +15,8 @@ import {
 } from '@mui/material';
 
 function Chords ({part}){
-    const [noteVal, setNoteVal] = useState();
-    const [mode, setMode] = useState('');
-    const [text, setText] = useState('');
+    
     const [currentKey, setCurrentKey] = useState([])
-
     const params = useParams();
     const dispatch = useDispatch();
 
@@ -98,16 +95,8 @@ function Chords ({part}){
     function handleSubmit(){
         event.preventDefault();
         dispatch({
-            type: 'POST_CHORD',
-            payload: {
-                info: {
-                     noteVal: noteVal,
-                     mode: mode,
-                     text: text,
-                },
-                partId: part.id,
-                projectId: params.id
-            }
+            type: 'UPDATE_PART',
+            payload: part
         })
     }
 
@@ -122,7 +111,14 @@ function Chords ({part}){
             <Select 
                 defaultValue={part.chord_value === null ? '' : part.chord_value }
                 id="note select" 
-                onChange={(evt) => setNoteVal(evt.target.value)}
+                onChange={(evt) => dispatch({
+                                    type: 'EDIT_PART_CHORD_VALUE', 
+                                    payload: {
+                                        partId: part.id,
+                                        chord_value: evt.target.value
+                                    }
+                                })
+                        }
             >
                 <MenuItem value="" >
                     <em> none </em>
@@ -138,7 +134,14 @@ function Chords ({part}){
             <Select 
                 defaultValue={part.chord_mode === null ? '' : part.chord_mode } 
                 id="mode select" 
-                onChange={(evt) => setMode(evt.target.value)}
+                onChange={(evt) => dispatch({
+                                    type: 'EDIT_PART_CHORD_MODE', 
+                                    payload: {
+                                        partId: part.id,
+                                        chord_mode: evt.target.value
+                                    }
+                                })
+                        }
             >
             <MenuItem value="">
                 <em>None</em>
@@ -153,7 +156,7 @@ function Chords ({part}){
         >
         <Button 
             variant='contained'
-            onClick={() => keyFinder(noteVal, mode)}
+            onClick={() => keyFinder(part.chord_value, part.chord_mode)}
         > 
             display chords in key
         </Button>
@@ -177,12 +180,13 @@ function Chords ({part}){
                 variant="outlined"
                 multiline
                 onChange={(evt) => dispatch({
-                                    type: 'EDIT_PART_CHORD', 
+                                    type: 'EDIT_PART_CHORD_TEXT', 
                                     payload: {
                                         partId: part.id,
                                         chord_text: evt.target.value
                                     }
-                                })}
+                                })
+                        }
                                 // setText(evt.target.value)}
             />
         </Stack>
@@ -195,9 +199,6 @@ function Chords ({part}){
         </form>
     </div>
   );
-
-
-    
 }
 
 export default Chords;

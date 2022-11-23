@@ -10,21 +10,21 @@ function* postPart(action){
 }
 //gets a part, sends it to reducer
 function* fetchParts(action) {
-        let response = yield axios.get(`/api/part/${action.payload}`);
-        yield put ({
-            type: 'SET_PARTS',
-            payload: response.data
-        });
-        console.log('fetch parts saga response', response.data)
+    let response = yield axios.get(`/api/part/${action.payload}`);
+    yield put ({
+        type: 'SET_PARTS',
+        payload: response.data
+    });
+    console.log('fetch parts saga response', response.data);
 }
 
-//update a part based on category, value and partId
-// function* updatePart(action){
-//     yield axios.put('/api/part', action.payload);
+// update a part based on category, value and partId
+function* updatePart(action){
+    yield axios.put('/api/part', action.payload);
 
-//     yield put({type:'FETCH_PARTS', payload: action.payload.projectId})
+    yield put({type:'FETCH_PARTS', payload: action.payload.project_id});
 
-// }
+}
 
 function* deletePart(action){
     yield axios.delete(`/api/part/${action.payload.partId}`);
@@ -36,7 +36,8 @@ function* deletePart(action){
 function* partSaga() {
     yield takeEvery('POST_PART', postPart);
     yield takeEvery('FETCH_PARTS', fetchParts);
-    yield takeEvery('DELETE_PART', deletePart)
+    yield takeEvery('DELETE_PART', deletePart);
+    yield takeEvery('UPDATE_PART', updatePart);
 }
 
 export default partSaga;

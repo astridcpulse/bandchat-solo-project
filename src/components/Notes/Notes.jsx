@@ -10,8 +10,6 @@ import {
 } from '@mui/material';
 
 
-
-
 function Notes({part}){
     const dispatch = useDispatch();
     const params = useParams();
@@ -19,14 +17,10 @@ function Notes({part}){
     const handleSubmit = (value) => { 
         event.preventDefault();
         console.log('notes value', value)
-    //     dispatch({ 
-    //         type: 'POST_NOTE',
-    //         payload: {
-    //             value: value,
-    //             partId: part.id,
-    //             projectId: params.id,
-    //             } 
-    //         });
+        dispatch({ 
+            type: 'UPDATE_PART',
+            payload: part 
+            });
     }
 
     return(
@@ -47,7 +41,6 @@ function Notes({part}){
                         payload: {
                             notes: evt.target.value,
                             partId: part.id,
-                            projectId: params.id,
                             }
                         })}
                 />
