@@ -11,6 +11,7 @@ function AudioRecorder({part}){
     //state for whether we're recording or not. And the "blob" as the encoded sound file
     const [recordStatus, setRecordStatus] = useState(true);
     const [blobUrl, setBlobUrl] = useState('');
+    // const [soundBlob, setSoundBlob] = useState('');
 
   // start mic recorder function
     const start = () => {
@@ -22,26 +23,26 @@ function AudioRecorder({part}){
           })
           .catch((err) => console.error('Start error', err));
     }
-console.log('part', part.id)
+  console.log('part', part.id)
+
   // stop mic recorder function
-    const stop = () => {
-        Recorder
-          .stop()
-          .getMp3()
-          .then(([buffer, blob]) => {
-            setRecordStatus(false);
-            console.log('blob', blob);
+  const stop = () => {
+      Recorder
+        .stop()
+        .getMp3()
+        .then(([buffer, blob]) => {
+          setRecordStatus(false);
+          console.log('blob', blob);
+          // setSoundBlob(blob);
+          dispatch({
+            type: 'UPLOAD_AUDIO',
+            payload: blob
+          })
 
-            // dispatch to saga upon stop recording
-            dispatch({ type: 'POST_AUDIO', payload: {blob: blob, partId: part.id }});
-
-
-            setBlobUrl(URL.createObjectURL(blob));
-      })
-          .catch((e) => console.log(e));
-      }
-
-
+          setBlobUrl(URL.createObjectURL(blob));
+    })
+        .catch((e) => console.log(e));
+    }
 
     return(
         <>
@@ -56,13 +57,9 @@ console.log('part', part.id)
             >
               Stop
             </Button>
-            <audio src={blobUrl} controls/>
-
-            {/* <Button
-              color="error"
-            >
-              delete
-            </Button> */}
+            <audio
+              name="uploaded_audio"
+              src={blobUrl} controls/>
 
         </>
     );

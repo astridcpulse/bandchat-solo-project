@@ -22,19 +22,14 @@ function ProjectWorkspace(){
 
     
     const user = useSelector((store) => store.user);
-    const project = useSelector(store => store.project)
-    const [thisProject, setThisProject] = useState('');
-
-
-    const chosenProject = (project.find((project) => {
-        if(project.id == params.id){
-            return project;
-        }
-    }))
+    const thisProject = useSelector(store => {
+        return store.project.find((project) => {
+            return project.id == params.id;
+        }) || {};
+    });
 
     useEffect(() => {
         dispatch({ type: 'FETCH_ALL_PROJECTS', payload: params.id});
-        setThisProject(chosenProject);
     }, [params.id])
  
 
@@ -58,10 +53,10 @@ function ProjectWorkspace(){
 
     return (
         <>
-            {/* <Typography 
+            <Typography 
                 variant="h3"
                 align='center'
-            > {thisProject.project_name}</Typography> */}
+            > {thisProject.project_name}</Typography>
 
             <Typography 
                 variant="h5"

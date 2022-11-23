@@ -11,7 +11,7 @@ Before you get started, make sure you have the following software installed on y
 - [Node.js](https://nodejs.org/en/)
 - [PostrgeSQL](https://www.postgresql.org/)
 - [Nodemon](https://nodemon.io/)
-
+- npm install --save multer, npm install -- save form-data
 ## Create database and table
 
 Create a new database called `bandchat_db` and create a tables as found in the database.sql file

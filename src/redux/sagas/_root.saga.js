@@ -9,6 +9,7 @@ import collaboratorSaga from './collaborator.saga';
 import partSaga from './part.saga';
 import noteSaga from './note.saga';
 import chordSaga from './chord.saga';
+import audioSaga from './audio.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -22,7 +23,7 @@ export default function* rootSaga() {
     loginSaga(), // login saga is now registered
     registrationSaga(),
     userSaga(),
-    // audioSaga(),
+    audioSaga(),
     projectSaga(),
     allUsersSaga(),
     collaboratorSaga(),

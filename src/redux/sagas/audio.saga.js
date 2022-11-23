@@ -1,15 +1,13 @@
 import { put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
+import FormData from 'form-data';
 
-function* postAudio(action){
-    console.log('action payload audio', action.payload);
-    
-        yield axios.post('/api/audio', action.payload)
-    //  catch (err){
-    //     console.error('error in storing audio to db', err);
-    // }
+function* uploadAudio(action){
 
-    yield put({type:'FETCH_AUDIO'})
+    console.log(' inside upload Audio saga', action.payload)
+    let formData = new FormData();
+
+    // formData.append('uploaded_audio', action.payload[0]);
 }
 
 function* fetchAudio() {
@@ -23,8 +21,8 @@ function* fetchAudio() {
 
 
 function* audioSaga() {
-    yield takeEvery('POST_AUDIO', postAudio);
-    yield takeEvery('FETCH_AUDIO', fetchAudio)
+    yield takeEvery('UPLOAD_AUDIO', uploadAudio);
+    // yield takeEvery('', fetchAudio)
 }
 
 export default audioSaga;

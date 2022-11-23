@@ -36,6 +36,9 @@ function* projectSaga() {
     yield takeEvery('FETCH_ALL_PROJECTS', fetchAllProjects);
     yield takeEvery('DELETE_PROJECT', deleteProject);
     // yield takeEvery('FETCH_PROJECT', fetchProject);
+
+
+    // FETCH_ACTIVE_PROJECT  ---> GET /api/projects/37   ---> store.activeProject = {id: 37, title: 'asdfsda', ...}
 }
 
 export default projectSaga;

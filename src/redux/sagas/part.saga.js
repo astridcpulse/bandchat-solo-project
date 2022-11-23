@@ -26,6 +26,8 @@ function* updatePart(action){
 
 }
 
+
+
 function* deletePart(action){
     yield axios.delete(`/api/part/${action.payload.partId}`);
 
