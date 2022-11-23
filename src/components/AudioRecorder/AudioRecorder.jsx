@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useDispatch, useSelector} from 'react-redux';
-import FormData from 'form-data';
 
 import { Button } from '@mui/material';
 
@@ -8,7 +7,6 @@ function AudioRecorder({part}){
     const dispatch = useDispatch();
     const MicRecorder = require('mic-recorder-to-mp3');
     const Recorder = new MicRecorder({ bitRate: 128});
-    let formData = new FormData();
 
     //state for whether we're recording or not. And the "blob" as the encoded sound file
     const [recordStatus, setRecordStatus] = useState(true);
@@ -37,17 +35,14 @@ function AudioRecorder({part}){
           console.log('blob', blob);
           setBlobUrl(URL.createObjectURL(blob));
           
-          // setSoundBlob(blob);
           dispatch({
             type: 'UPLOAD_AUDIO',
-            payload: { blob: blob,
-                        partId: part.id
-                      }
-                        
-                  
+            payload: { 
+              blob: blob,
+              partId: part.id,
+              projectId: part.project_id
+            }
           })
-
-          
     })
         .catch((e) => console.log(e));
     }
@@ -67,7 +62,10 @@ function AudioRecorder({part}){
             </Button>
             <audio
               name="uploaded_audio"
-              src={blobUrl} controls/>
+              src={`http://localhost:3000${part.sound.replace('public', '')}`}
+              controls
+            />
+            {/* http://localhost:3000/sound/sound_file-1669235449771.mp3 */}
 
         </>
     );

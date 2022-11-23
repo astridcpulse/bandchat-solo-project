@@ -10,23 +10,22 @@ function* uploadAudio(action){
     formData.append('uploaded_audio', action.payload.blob);
 
     yield axios.put(`api/audio/${action.payload.partId}`, formData)
-}
 
-function* fetchAudio() {
-  
-
-    let response = yield axios.get('/api/audio');
     yield put ({
-        type: 'SAVE_AUDIO',
-        payload: response.data
+        type: 'FETCH_PARTS', payload: action.payload.projectId
     })
-    
 }
 
+// function* fetchAudio() {
+//     yield put ({
+//         type: 'SAVE_AUDIO',
+//         payload: response.data
+//     })
+// }
 
 function* audioSaga() {
     yield takeEvery('UPLOAD_AUDIO', uploadAudio);
-    // yield takeEvery('', fetchAudio)
+    // yield takeEvery('FETCH_AUDIO', fetchAudio);
 }
 
 export default audioSaga;
