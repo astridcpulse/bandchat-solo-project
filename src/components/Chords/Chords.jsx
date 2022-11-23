@@ -176,7 +176,14 @@ function Chords ({part}){
                 label='chords/notation'
                 variant="outlined"
                 multiline
-                onChange={(evt) => setText(evt.target.value)}
+                onChange={(evt) => dispatch({
+                                    type: 'EDIT_PART_CHORD', 
+                                    payload: {
+                                        partId: part.id,
+                                        chord_text: evt.target.value
+                                    }
+                                })}
+                                // setText(evt.target.value)}
             />
         </Stack>
         <Button

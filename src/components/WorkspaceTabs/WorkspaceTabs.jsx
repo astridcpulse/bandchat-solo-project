@@ -97,6 +97,7 @@ function WorkspaceTabs(){
                 {projectParts && projectParts.map((part) =>  
 
                 <Card
+                    key={part.id}
                     sx={{ borderBottom: 1, 
                         borderColor: "divider",
                         p:10,

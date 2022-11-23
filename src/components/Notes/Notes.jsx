@@ -5,7 +5,8 @@ import { useEffect } from 'react';
 
 import { 
     TextField,
-    Button
+    Button,
+    Stack
 } from '@mui/material';
 
 
@@ -15,23 +16,48 @@ function Notes({part}){
     const dispatch = useDispatch();
     const params = useParams();
     
-    console.log('params', params)
+    const handleSubmit = (value) => { 
+        event.preventDefault();
+        console.log('notes value', value)
+    //     dispatch({ 
+    //         type: 'POST_NOTE',
+    //         payload: {
+    //             value: value,
+    //             partId: part.id,
+    //             projectId: params.id,
+    //             } 
+    //         });
+    }
+
     return(
-        <form>
-            <TextField
-                defaultValue={part.notes = null ? '' : part.notes}
-                label='notes'
-                variant="outlined"
-                multiline
-                onChange={(evt) => {dispatch({ 
-                    type: 'POST_NOTE',
-                    payload: {
-                        value: evt.target.value,
-                        partId: part.id,
-                        projectId: params.id,
-                        category: "notes"} 
-                    })}}
-            />
+        <form
+            //post to saga on submit
+            onSubmit={(evt) => handleSubmit(evt.target.notes.value)}
+        >
+            <Stack>
+                <TextField
+                    defaultValue={part.notes = null ? '' : part.notes}
+                    label='notes'
+                    name='notes'
+                    variant="outlined"
+                    multiline
+                    //update redux onChange
+                    onChange={(evt) => dispatch({ 
+                        type: 'EDIT_PART_NOTE',
+                        payload: {
+                            notes: evt.target.value,
+                            partId: part.id,
+                            projectId: params.id,
+                            }
+                        })}
+                />
+                <Button 
+                    type='submit'
+                    variant='contained'
+                >
+                    Save Notes
+                </Button>
+            </Stack>
         </form>
     );
 }

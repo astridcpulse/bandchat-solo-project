@@ -7,18 +7,17 @@ const {
 
 
 //gets all parts assigned to a specified project ID
-router.get('/:projectId', rejectUnauthenticated, (req, res) => {
-    const sqlText = `SELECT * FROM "part_data" 
+router.get('/:projectId', rejectUnauthenticated, async (req, res) => {
+    try{
+        const sqlText = `SELECT * FROM "part_data" 
                     WHERE "project_id" = $1;`;
-    
-    pool.query(sqlText, [req.params.projectId])
-        .then((dbRes) => {  
-            res.send(dbRes.rows);
-        })
-        .catch((dbErr) => {
-            console.error('error in GET projects', dbErr)
-            res.sendStatus(500);
-        });
+        let dbRes = await pool.query(sqlText, [req.params.projectId]);
+        res.send(dbRes.rows);
+    }
+    catch (err) {
+        console.error('error in GET projects', err)
+        res.sendStatus(500);
+    }
 });
 
 
