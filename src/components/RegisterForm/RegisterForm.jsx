@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import {
+  Card,
+  Box
+}   from '@mui/material';
 
 function RegisterForm() {
   const [username, setUsername] = useState('');
@@ -21,13 +25,18 @@ function RegisterForm() {
 
   return (
     <form className="formPanel" onSubmit={registerUser}>
+      <Box sx={{ 
+        // display: 'inline-flex',
+        // flexDirection: 'row',
+        // justifyContent: 'center'
+      }}>
       <h2>Register User</h2>
       {errors.registrationMessage && (
         <h3 className="alert" role="alert">
           {errors.registrationMessage}
         </h3>
       )}
-      <div>
+      <Card>
         <label htmlFor="username">
           Username:
           <input
@@ -38,8 +47,8 @@ function RegisterForm() {
             onChange={(event) => setUsername(event.target.value)}
           />
         </label>
-      </div>
-      <div>
+      </Card>
+      <Card>
         <label htmlFor="password">
           Password:
           <input
@@ -50,10 +59,11 @@ function RegisterForm() {
             onChange={(event) => setPassword(event.target.value)}
           />
         </label>
-      </div>
+      </Card>
       <div>
         <input className="btn" type="submit" name="submit" value="Register" />
       </div>
+      </Box>
     </form>
   );
 }
