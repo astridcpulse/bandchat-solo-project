@@ -11,6 +11,7 @@ import { ThemeProvider,
         Typography
         } 
         from '@mui/material';
+import { useLocation } from "react-router-dom";
 
 import WorkspaceTabs from '../WorkspaceTabs/WorkspaceTabs';
 
@@ -25,15 +26,15 @@ function ProjectWorkspace(){
     const [thisProject, setThisProject] = useState('');
 
 
-    // const chosenProject = (project.find((project) => {
-    //     if(project.id == params.id){
-    //         return project;
-    //     }
-    // }))
+    const chosenProject = (project.find((project) => {
+        if(project.id == params.id){
+            return project;
+        }
+    }))
 
     useEffect(() => {
-        dispatch({ type: 'FETCH_PROJECT', payload: params.id});
-        // setThisProject(chosenProject);
+        dispatch({ type: 'FETCH_ALL_PROJECTS', payload: params.id});
+        setThisProject(chosenProject);
     }, [params.id])
  
 
@@ -53,15 +54,15 @@ function ProjectWorkspace(){
                 projectId: params.id
             }
         })
-
     }
 
     return (
         <>
-            <Typography 
+            {/* <Typography 
                 variant="h3"
                 align='center'
-            > {project && project[0].project_name}</Typography>
+            > {thisProject.project_name}</Typography> */}
+
             <Typography 
                 variant="h5"
                 align='center'
@@ -94,9 +95,6 @@ function ProjectWorkspace(){
             </form>
             <WorkspaceTabs />
 
-            
-
-            {/* <AudioRecorder /> */}
         </>
     );
 }

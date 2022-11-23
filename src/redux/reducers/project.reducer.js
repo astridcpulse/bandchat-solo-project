@@ -1,3 +1,9 @@
+// const DEFAULT_STATE= {
+//   loading: false
+// }
+
+
+
 const projectReducer = (state = [], action) => {
     switch (action.type) {
         case 'SET_PROJECTS':

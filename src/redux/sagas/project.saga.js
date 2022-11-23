@@ -17,13 +17,13 @@ function* fetchAllProjects() {
         });
 }
 
-function* fetchProject(action){
-        let response = yield axios.get(`/api/projects/${action.payload}`);
-        yield put ({
-            type: 'SET_PROJECTS',
-            payload: response.data
-        });
-}
+// function* fetchProject(action){
+//         let response = yield axios.get(`/api/projects/${action.payload}`);
+//         yield put ({
+//             type: 'SET_PROJECTS',
+//             payload: response.data
+//         });
+// }
 //deletes a project from db, runs a get to get all current projects
 function* deleteProject(action){
     yield axios.delete(`/api/projects/${action.payload}`);
@@ -35,7 +35,7 @@ function* projectSaga() {
     yield takeEvery('POST_PROJECT', postProject);
     yield takeEvery('FETCH_ALL_PROJECTS', fetchAllProjects);
     yield takeEvery('DELETE_PROJECT', deleteProject);
-    yield takeEvery('FETCH_PROJECT', fetchProject);
+    // yield takeEvery('FETCH_PROJECT', fetchProject);
 }
 
 export default projectSaga;

@@ -80,7 +80,9 @@ function AllProjectsPage() {
           key={project.id}
         >
           <CardActionArea>
-            <h3 onClick={() => history.push(`/workspace/${project.id}`)}
+            <h3 
+              onClick={() => history.push(`/workspace/${project.id}` )}
+              
             >{project.project_name}</h3>
           </CardActionArea>
             <AddCollaborators 
