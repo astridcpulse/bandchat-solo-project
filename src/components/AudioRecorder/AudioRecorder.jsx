@@ -62,7 +62,7 @@ function AudioRecorder({part}){
             </Button>
             <audio
               name="uploaded_audio"
-              src={`http://localhost:3000${part.sound.replace('public', '')}`}
+              src={part.sound === null ? '' : `http://localhost:3000${part.sound.replace('public', '')}`}
               controls
             />
             {/* http://localhost:3000/sound/sound_file-1669235449771.mp3 */}

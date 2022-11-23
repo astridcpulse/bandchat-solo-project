@@ -25,12 +25,16 @@ function PartWorkspace({part}){
 
     const checkExists = () => {
         if( part.notes){
-            setNotesStatus(true)
+            setNotesStatus(true);
         }
 
         if( part.chord_value || part.chord_mode || part.chord_text){
-            setChordsStatus(true)
+            setChordsStatus(true);
         } 
+
+        if (part.sound){
+            setRecordStatus(true);
+        }
     }
 
 
@@ -56,10 +60,10 @@ function PartWorkspace({part}){
         });
     }
 
-    const handleDeleteRecord =() => {
+    const handleDeleteAudio=() => {
         setRecordStatus(false);
         dispatch({
-            type: 'DELETE_RECORD',
+            type: 'DELETE_AUDIO',
             payload: part.id
         });
     }
@@ -120,7 +124,7 @@ function PartWorkspace({part}){
                 /> 
                 <Button 
                     color="error"
-                    onClick={() => handleDeleteRecord()}
+                    onClick={() => handleDeleteAudio()}
                 >
                 Delete</Button> 
             </div>}            
