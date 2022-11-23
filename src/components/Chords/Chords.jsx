@@ -100,12 +100,11 @@ function Chords ({part}){
         })
     }
 
-    console.log('part', part);
     return(
 
     <div>
         <h5>KEY: </h5>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={() => handleSubmit()}>
         <FormControl sx={{ m: 1, minWidth: 130 }}>
             <InputLabel> Root Chord </InputLabel>
             <Select 

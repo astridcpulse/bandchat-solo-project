@@ -14,9 +14,8 @@ function Notes({part}){
     const dispatch = useDispatch();
     const params = useParams();
     
-    const handleSubmit = (value) => { 
+    const handleSubmit = () => { 
         event.preventDefault();
-        console.log('notes value', value)
         dispatch({ 
             type: 'UPDATE_PART',
             payload: part 
@@ -26,7 +25,7 @@ function Notes({part}){
     return(
         <form
             //post to saga on submit
-            onSubmit={(evt) => handleSubmit(evt.target.notes.value)}
+            onSubmit={() => handleSubmit()}
         >
             <Stack>
                 <TextField

@@ -10,7 +10,8 @@ const {
 router.get('/:projectId', rejectUnauthenticated, async (req, res) => {
     try{
         const sqlText = `SELECT * FROM "part_data" 
-                    WHERE "project_id" = $1;`;
+                    WHERE "project_id" = $1
+                    ORDER BY "id" ASC;`;
         let dbRes = await pool.query(sqlText, [req.params.projectId]);
         res.send(dbRes.rows);
     }
@@ -59,7 +60,7 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 });
 
 router.put('/', rejectUnauthenticated, async (req, res) =>{
-    console.log('action payload part PUT', action.payload)
+    console.log('action payload part PUT', req.body)
     try{
         const sqlText = `UPDATE "part_data"
                             SET
@@ -70,18 +71,20 @@ router.put('/', rejectUnauthenticated, async (req, res) =>{
                             "chord_text" = $5, 
                             "sound" = $6, 
                             "project_id" = $7
+                        WHERE "id" = $8
                             `;
         const sqlParams = [
-                            action.payload.part_name,
-                            action.payload.notes,
-                            action.payload.chord_value,
-                            action.payload.chord_mode,
-                            action.payload.chord_text,
-                            action.payload.sound,
-                            action.payload.project_id
+                            req.body.part_name,
+                            req.body.notes,
+                            req.body.chord_value,
+                            req.body.chord_mode,
+                            req.body.chord_text,
+                            req.body.sound,
+                            req.body.project_id,
+                            req.body.id
                             ];
         let dbRes = await pool.query(sqlText, sqlParams);
-        res.sendStatus(dbRes.rows);
+        res.send(dbRes.rows);
     }
     catch (err) {
         console.error('error in PUT parts', err);

@@ -28,7 +28,7 @@ function PartWorkspace({part}){
             setNotesStatus(true)
         }
 
-        if( part.chord_value){
+        if( part.chord_value || part.chord_mode || part.chord_text){
             setChordsStatus(true)
         } 
     }
