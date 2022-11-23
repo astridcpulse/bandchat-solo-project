@@ -9,8 +9,16 @@ function* postProject(action){
     yield put({type:'FETCH_PROJECTS'});
 }
 //gets a project, sends it to reducer
-function* fetchProjects() {
-        let response = yield axios.get('/api/projects');
+function* fetchAllProjects() {
+        let response = yield axios.get(`/api/projects/`);
+        yield put ({
+            type: 'SET_PROJECTS',
+            payload: response.data
+        });
+}
+
+function* fetchProject(action){
+        let response = yield axios.get(`/api/projects/${action.payload}`);
         yield put ({
             type: 'SET_PROJECTS',
             payload: response.data
@@ -20,13 +28,14 @@ function* fetchProjects() {
 function* deleteProject(action){
     yield axios.delete(`/api/projects/${action.payload}`);
 
-    yield put({type:'FETCH_PROJECTS'});
+    yield put({type:'FETCH_ALL_PROJECTS'});
 }
 //watcher function to catch all dispatches
 function* projectSaga() {
     yield takeEvery('POST_PROJECT', postProject);
-    yield takeEvery('FETCH_PROJECTS', fetchProjects);
+    yield takeEvery('FETCH_ALL_PROJECTS', fetchAllProjects);
     yield takeEvery('DELETE_PROJECT', deleteProject);
+    yield takeEvery('FETCH_PROJECT', fetchProject);
 }
 
 export default projectSaga;

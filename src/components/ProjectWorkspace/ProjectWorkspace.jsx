@@ -19,25 +19,23 @@ function ProjectWorkspace(){
     const params = useParams();
     const dispatch = useDispatch();
 
-    const project = useSelector(store => store.project)
+    
     const user = useSelector((store) => store.user);
-
+    const project = useSelector(store => store.project)
     const [thisProject, setThisProject] = useState('');
 
 
-    const chosenProject = (project.find((project) => {
-        if(project.id == params.id){
-            return project;
-        }
-    }))
-    
-   
+    // const chosenProject = (project.find((project) => {
+    //     if(project.id == params.id){
+    //         return project;
+    //     }
+    // }))
 
     useEffect(() => {
-        setThisProject(chosenProject);
-        dispatch({ type: 'FETCH_PROJECTS'});
+        dispatch({ type: 'FETCH_PROJECT', payload: params.id});
+        // setThisProject(chosenProject);
     }, [params.id])
-
+ 
 
     //dummy data for helper search and add
     const helpers = [
@@ -47,8 +45,6 @@ function ProjectWorkspace(){
     ];
 
     const handleCreatePart = (event) => {
-        console.log('the thing with noelani', event.target.partname.value)
-
         event.preventDefault();
         dispatch({
             type: 'POST_PART',
@@ -65,7 +61,7 @@ function ProjectWorkspace(){
             <Typography 
                 variant="h3"
                 align='center'
-            > {thisProject && thisProject.project_name}</Typography>
+            > {project && project[0].project_name}</Typography>
             <Typography 
                 variant="h5"
                 align='center'
@@ -80,7 +76,6 @@ function ProjectWorkspace(){
                 sx={{ width: 300 }}
                 renderInput={(params) => <TextField {...params} label="Helpers" />}
             />
-
 
             <form
                 onSubmit={(evt) => handleCreatePart(evt)}

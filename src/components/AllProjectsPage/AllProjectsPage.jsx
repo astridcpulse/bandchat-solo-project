@@ -35,7 +35,7 @@ function AllProjectsPage() {
   //TODO make sure it only gets projects from current user
   const fetchProjects = () => {
     dispatch({
-      type: 'FETCH_PROJECTS'
+      type: 'FETCH_ALL_PROJECTS'
     });
   }
 

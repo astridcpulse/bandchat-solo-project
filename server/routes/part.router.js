@@ -16,7 +16,7 @@ router.get('/:projectId', rejectUnauthenticated, async (req, res) => {
         res.send(dbRes.rows);
     }
     catch (err) {
-        console.error('error in GET projects', err)
+        console.error('error in GET projects', err);
         res.sendStatus(500);
     }
 });

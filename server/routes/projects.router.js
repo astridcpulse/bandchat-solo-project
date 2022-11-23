@@ -20,6 +20,17 @@ router.get('/', rejectUnauthenticated, (req, res) => {
         });
 });
 
+router.get('/:id', rejectUnauthenticated, async (req, res) => {
+    try{
+        const sqlText = `SELECT * FROM "project_data" WHERE "id" = $1;`;
+        let dbRes = await pool.query(sqlText, [req.params.id])
+        res.send(dbRes.rows);
+    }
+    catch (err) {
+        console.error('error in GET current project', err);
+        res.sendStatus(500);
+    }
+})
 
 //post a new project to the database
 router.post('/', rejectUnauthenticated, (req, res) => {
