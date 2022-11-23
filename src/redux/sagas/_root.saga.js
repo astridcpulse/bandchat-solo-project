@@ -27,7 +27,7 @@ export default function* rootSaga() {
     allUsersSaga(),
     collaboratorSaga(),
     partSaga(),
-    noteSaga(),
-    chordSaga()
+    noteSaga(), 
+    chordSaga() 
   ]);
 }
