@@ -70,21 +70,24 @@ function PartWorkspace({part}){
 
     return(
         <div>
-            <ButtonGroup size='small' color='secondary'>
+            <ButtonGroup size='small' color='inherit'>
                 <Button
                     onClick={() => setNotesStatus(true)}
+                    sx={{m:0}}
                 > 
                     Notes 
                 </Button>
 
                 <Button
                     onClick={() => setChordsStatus(true)}
+                    sx={{m:0}}
                 > 
                     Chords 
                 </Button>
 
                 <Button
                     onClick={() => setRecordStatus(true)}
+                    sx={{m:0}}
                 > 
                     Record 
                 </Button>

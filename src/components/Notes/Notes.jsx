@@ -34,6 +34,7 @@ function Notes({part}){
                     name='notes'
                     variant="outlined"
                     multiline
+                    // sx={{m:2}}
                     //update redux onChange
                     onChange={(evt) => dispatch({ 
                         type: 'EDIT_PART_NOTE',
@@ -46,6 +47,7 @@ function Notes({part}){
                 <Button 
                     type='submit'
                     variant='contained'
+                    
                 >
                     Save Notes
                 </Button>

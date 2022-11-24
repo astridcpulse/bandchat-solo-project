@@ -1,7 +1,15 @@
 
 import React, { useEffect, useState} from 'react';
 
-import { Button, OutlinedInput, Autocomplete, TextField } from '@mui/material';
+import { Button, 
+    OutlinedInput, 
+    Autocomplete, 
+    TextField,
+    List,
+    ListItem,
+    Typography,
+    ListboxProps
+} from '@mui/material';
 import { useDispatch, useSelector} from 'react-redux';
 import axios from 'axios';
 
@@ -25,7 +33,6 @@ function AddCollaborators({projectId}){
         evt.preventDefault();
 
         for(let person of value){
-            // posting directly to server and db, collaborator saga is unused right now
             // console.log('person', person)
             // isolating the id number from the string
             let userId = parseInt(person.split(' ')[person.split(' ').length - 1]);
@@ -49,25 +56,41 @@ function AddCollaborators({projectId}){
     }
     return(
         <>
-        <h4> collaborators: </h4>
-        <ul>
+        <Typography
+            variant='h5'
+        > 
+            collaborators: 
+        </Typography>
+        <List row>
             {collaborator && collaborator.map((person) => {
                 if(person.project_id === projectId){
                     return(
-                        <li> {person.username} </li>  
+                        <ListItem> {person.username} </ListItem>  
                     )
                 }
             })}
             
-        </ul>
+        </List>
         
         <form
             onSubmit={postCollaborators}
         >
         <Autocomplete
+            ListboxProps= {{
+                sx: {
+                  color: '#fff',
+                  bgcolor: 'secondary.dark',
+                  border: 2,
+                  fontWeight: 'bold'
+                  }
+                }}
             multiple
             sx={{
-              width: 400
+              width: 400,
+              bgcolor: 'paper.main',
+              color: '#000000'
+              // text of menu is set with text.primary in theme
+                
             }}
             id="collaborator-input"
             options={allUsers.map((option) => `${option.username}, ID: ${option.id}`)}
