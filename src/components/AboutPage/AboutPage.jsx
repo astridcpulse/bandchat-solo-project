@@ -14,8 +14,15 @@ function AboutPage() {
   return (
     <div className="container">
       <div>
-        <h3> What is BandChat?</h3>
-        <Typography>BandChat is a workspace for musicians to collaborate together on their musical projects, without stepping on each others toes. Everyone can have their own workspace, and with BandChat you wont need to wait til rehearsal to learn what your drummer has been up to!</Typography>
+        <Typography variant='h2'> 
+          What is BandChat?
+        </Typography>
+        <Typography 
+          sx={{m:3}}
+          variant='h4'
+        >
+          BandChat is a workspace for musicians to collaborate together on their musical projects, without stepping on each others toes. Everyone can have their own workspace, and with BandChat you wont need to wait til rehearsal to learn what your drummer has been up to!
+        </Typography>
       </div>
       <Card
         sx={{
@@ -23,16 +30,18 @@ function AboutPage() {
           height: 350,
           width: 600,
           boxShadow: 3,
-          p: 5
+          p: 4
         }}
       >
-        <Typography> 
+        <Typography 
+          sx={{m: 2}}
+          variant='h5'> 
           BandChat is soley developed and maintained by Astrid Pulse. She sings and plays guitar. Shes the total package. </Typography>
         <CardMedia  
           sx={{
           
             height: 300, 
-            width: 300, 
+            width: 800, 
             border: 10,
             borderRadius: 4
 
