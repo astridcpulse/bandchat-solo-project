@@ -76,7 +76,7 @@ function AllProjectsPage() {
       {projects.map(project => 
       
         <Card 
-          sx={{width: 500, m: 1}}
+          sx={{width: 500, m: 1, bgcolor: 'primary.light', border:2}}
           key={project.id}
         >
           <CardActionArea>
