@@ -6,7 +6,6 @@ import {
   Box
 }   from '@mui/material';  
 
-// CUSTOM COMPONENTS
 import RegisterForm from '../RegisterForm/RegisterForm';
 
 function LandingPage() {
