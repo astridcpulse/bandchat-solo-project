@@ -110,7 +110,14 @@ function PartWorkspace({part}){
                     part={part}
                 /> 
                 <Button 
-                    sx={{px:5, ml: 5}}
+                    sx={{
+                        mt: '5%',
+                        px:5, 
+                        ml: 5,
+                        width: 200,
+                        height: 50
+                    }}
+                    variant="contained"
                     color="error"
                     onClick={() => handleDeleteNotes()}
                 >
@@ -127,7 +134,15 @@ function PartWorkspace({part}){
                     part={part}
                 /> 
                 <Button 
-                    sx={{px:5, ml: 5}}
+                    sx={{
+                        align: 'center',
+                        mt: '30%',
+                        px:2, 
+                        ml: 5,
+                        width: 200,
+                        height: 50
+                    }}
+                    variant='contained'
                     color="error"
                     onClick={() => handleDeleteChords()}
                 >
@@ -143,7 +158,14 @@ function PartWorkspace({part}){
                     part={part}
                 /> 
                 <Button 
-                    sx={{px:5, ml: 5}}
+                    sx={{
+                        mt: '5%',
+                        px:5, 
+                        ml: 5,
+                        width: 200,
+                        height: 50
+                    }}
+                    variant='contained'
                     color="error"
                     onClick={() => handleDeleteAudio()}
                 >

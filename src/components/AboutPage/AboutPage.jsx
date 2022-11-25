@@ -14,7 +14,7 @@ function AboutPage() {
   return (
     <Box className="container">
       <Box>
-        <Typography variant='h2'> 
+        <Typography variant='h2' sx={{fontFamily: 'Rubik Glitch'}}> 
           What is BandChat?
         </Typography>
         <Typography 

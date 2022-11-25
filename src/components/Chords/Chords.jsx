@@ -208,7 +208,7 @@ function Chords ({part}){
             variant='contained'
             type='submit'
         >
-            Save
+            Save Key / Chords / Notation
         </Button>
         </form>
     </Box>
