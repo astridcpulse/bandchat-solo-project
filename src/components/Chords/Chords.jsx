@@ -4,6 +4,7 @@ import {useParams} from 'react-router-dom';
 
 import {
     TextField,
+    Typography,
     Button,
     InputLabel,
     MenuItem,
@@ -106,7 +107,7 @@ function Chords ({part}){
         sx={{mx:5, width: 400}}
 
     >
-        <h5>KEY: </h5>
+        <h4>KEY: </h4>
         <form onSubmit={() => handleSubmit()}>
         <FormControl sx={{ m: 1, minWidth: 130 }}>
             <InputLabel> Root Chord </InputLabel>
@@ -134,14 +135,6 @@ function Chords ({part}){
         <FormControl sx={{ m: 1, minWidth: 140 }}>
             <InputLabel> Major/Minor </InputLabel>
             <Select 
-                // ListboxProps= {{
-                //     sx: {
-                //       color: '#000000',
-                //       bgcolor: 'secondary.dark',
-                //       border: 2,
-                //       fontWeight: 'bold'
-                //       }
-                //     }}
                 defaultValue={part.chord_mode === null ? '' : part.chord_mode } 
                 id="mode select" 
                 onChange={(evt) => dispatch({
@@ -164,41 +157,52 @@ function Chords ({part}){
             direction="column"
             sx={{bgcolor: "whitesmoke", m:2 }}
         >
-        <Button 
-            variant='contained'
-            onClick={() => keyFinder(part.chord_value, part.chord_mode)}
-        > 
-            display chords in key
-        </Button>
-        
-        { currentKey 
-            &&
-        <Box
-            sx={{m:2}}
-        >
-            {currentKey.map((chord, index) =>
-               <h4>{majorKey[index]} :  {chord}</h4>
-            )}
-            
-        </Box>
+            <Box
+                sx={{
+                    bgcolor: '#D8D8D8',
+                    border: 2,
+                    borderColor: 'primary.dark'
+                }}
+            >
+                <Button 
+                    variant='contained'
+                    onClick={() => keyFinder(part.chord_value, part.chord_mode)}
+                > 
+                    display chords in key
+                </Button>
+                
+                { currentKey 
+                    &&
+                <Box
+                    sx={{m:2}}
+                >
+                    <Typography
+                        sx={{color: 'primary.main'}}
+                    >
+                        {currentKey.map((chord, index) =>
+                        <h4>{majorKey[index]} :  {chord}</h4>
+                        )}
+                    </Typography>
+                </Box>
 
-        }
-        <TextField
-                sx={{m: 2}}
-                defaultValue={part.chord_text === null ? '' : part.chord_text}
-                label='chords/notation'
-                variant="outlined"
-                multiline
-                onChange={(evt) => dispatch({
-                                    type: 'EDIT_PART_CHORD_TEXT', 
-                                    payload: {
-                                        partId: part.id,
-                                        chord_text: evt.target.value
-                                    }
-                                })
-                        }
-                                // setText(evt.target.value)}
-            />
+                }
+                <TextField
+                        sx={{m: 2}}
+                        defaultValue={part.chord_text === null ? '' : part.chord_text}
+                        label='chords/notation'
+                        variant="outlined"
+                        multiline
+                        onChange={(evt) => dispatch({
+                                            type: 'EDIT_PART_CHORD_TEXT', 
+                                            payload: {
+                                                partId: part.id,
+                                                chord_text: evt.target.value
+                                            }
+                                        })
+                                }
+                                        // setText(evt.target.value)}
+                    />
+            </Box>
         </Stack>
         <Button
             variant='contained'

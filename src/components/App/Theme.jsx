@@ -71,9 +71,7 @@ const Theme = createTheme({
         MuiInputBase: {
             styleOverrides: {
                 root: {
-                    label:{
-                        color: '#000000',
-                    }
+                    color: '#000000',
                 }
             }
         },
@@ -81,7 +79,7 @@ const Theme = createTheme({
             styleOverrides: {
                 root: {
                     backgroundColor: '#D8D8D8',
-                    color: '#000000'
+                    // color: '#000000'
                 }
             }
         },
@@ -109,16 +107,6 @@ const Theme = createTheme({
                 }
             }
         },
-
-        
-        // MuiAutocomplete: {
-        //     styleOverrides: {
-        //         root: {
-        //             text: '#000000',
-        //             backgroundColor: '#254a5a'
-        //         }
-        //     }
-        // }
     }
 })
 // color for paper

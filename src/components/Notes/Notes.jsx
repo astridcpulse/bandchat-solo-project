@@ -31,13 +31,17 @@ function Notes({part}){
                 sx={{mx:5, width: 400}}
             >
                 <TextField
-                   
+                    sx={{
+                        bgcolor: '#D8D8D8',
+                        border: 2,
+                        borderColor: 'primary.dark'
+                    }}
                     defaultValue={part.notes = null ? '' : part.notes}
                     label='notes'
                     name='notes'
                     variant="outlined"
                     multiline
-                    // sx={{m:2}}
+                    
                     //update redux onChange
                     onChange={(evt) => dispatch({ 
                         type: 'EDIT_PART_NOTE',
