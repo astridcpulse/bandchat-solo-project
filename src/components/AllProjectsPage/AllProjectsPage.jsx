@@ -60,6 +60,7 @@ function AllProjectsPage() {
       <h2>Welcome, {user.username}!</h2>
       
       <OutlinedInput 
+        sx={{bgcolor: "#fff"}}
         onChange={(evt) => setNewProject(evt.target.value)}
         placeholder="new project name"
       ></OutlinedInput>

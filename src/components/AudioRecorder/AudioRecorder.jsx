@@ -3,35 +3,39 @@ import { useDispatch, useSelector} from 'react-redux';
 
 import { Button, Box } from '@mui/material';
 
+//remove {part}
 function AudioRecorder({part}){
     const dispatch = useDispatch();
     const MicRecorder = require('mic-recorder-to-mp3');
     const Recorder = new MicRecorder({ bitRate: 128});
-
     //state for whether we're recording or not. And the "blob" as the encoded sound file
     const [recordStatus, setRecordStatus] = useState(true);
     const [blobUrl, setBlobUrl] = useState('');
+    const [buttonDisplay, setButtonDisplay] = useState(false)
     // const [soundBlob, setSoundBlob] = useState('');
 
   // start mic recorder function
     const start = () => {
+      
         Recorder
           .start()
           .then(() => {
             setRecordStatus(true);
-  
+            
           })
           .catch((err) => console.error('Start error', err));
+          // setButtonDisplay(true);
     }
-  console.log('part', part.id)
 
   // stop mic recorder function
   const stop = () => {
+      
       Recorder
         .stop()
         .getMp3()
         .then(([buffer, blob]) => {
-          setRecordStatus(false);
+         setRecordStatus(false);
+         
           console.log('blob', blob);
           setBlobUrl(URL.createObjectURL(blob));
           
@@ -44,22 +48,25 @@ function AudioRecorder({part}){
             }
           })
     })
-        .catch((e) => console.log(e));
+        .catch((err) => console.log('stop error', err));
+        // setButtonDisplay(false);
+        
     }
 
     return(
         <Box
           sx={{mx:5, width: 400}}
-
         >
-            <Button 
-              onClick={start} 
+            <Button
+              onClick={() => start()}
+              variant={buttonDisplay ? "outlined" : "contained"}
             >
               Record
             </Button>
 
             <Button 
-              onClick={stop}
+              onClick={() => stop()}
+              variant={buttonDisplay ? "contained" : "outlined" }
             >
               Stop
             </Button>
