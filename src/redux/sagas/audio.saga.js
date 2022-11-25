@@ -16,16 +16,17 @@ function* uploadAudio(action){
     })
 }
 
-// function* fetchAudio() {
-//     yield put ({
-//         type: 'SAVE_AUDIO',
-//         payload: response.data
-//     })
-// }
+function* deleteAudio(action){
+    yield axios.delete(`api/audio/${action.payload.partId}`);
+
+    yield put ({
+        type: 'FETCH_PARTS', payload: action.payload.projectId
+    })
+}
 
 function* audioSaga() {
     yield takeEvery('UPLOAD_AUDIO', uploadAudio);
-    // yield takeEvery('FETCH_AUDIO', fetchAudio);
+    yield takeEvery('DELETE_AUDIO', deleteAudio);
 }
 
 export default audioSaga;

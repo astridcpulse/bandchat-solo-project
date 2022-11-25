@@ -31,7 +31,7 @@ const upload = multer({
 
 // end multer endpoint
 
-router.put('/:id', upload.single('uploaded_audio'), async (req, res)=> {
+router.put('/:id', rejectUnauthenticated, upload.single('uploaded_audio'), async (req, res)=> {
 
   console.log('req body for sound', req.file);
   try{
@@ -51,8 +51,20 @@ router.put('/:id', upload.single('uploaded_audio'), async (req, res)=> {
     }
 });
 
-router.delete('/', (req, res) => {
-  // UPDATE the sql 
+router.delete('/:id', rejectUnauthenticated, (req, res) => {
+
+  const sqlText = `UPDATE "part_data"
+                  SET "sound" = NULL
+                  WHERE "part_data".id = $1;`;
+
+  pool.query(sqlText, [req.params.id])
+      .then((dbRes) => {  
+          res.sendStatus(200);
+      })
+      .catch((dbErr) => {
+          console.error('error in DELETE audio', dbErr)
+          res.sendStatus(500);
+      });
 });
 
 

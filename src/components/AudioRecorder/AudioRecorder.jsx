@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector} from 'react-redux';
 
-import { Button } from '@mui/material';
+import { Button, Box } from '@mui/material';
 
 function AudioRecorder({part}){
     const dispatch = useDispatch();
@@ -48,7 +48,10 @@ function AudioRecorder({part}){
     }
 
     return(
-        <>
+        <Box
+          sx={{mx:5, width: 400}}
+
+        >
             <Button 
               onClick={start} 
             >
@@ -67,7 +70,7 @@ function AudioRecorder({part}){
             />
             {/* http://localhost:3000/sound/sound_file-1669235449771.mp3 */}
 
-        </>
+        </Box>
     );
 }
 

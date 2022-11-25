@@ -19,7 +19,6 @@ import WorkspaceTabs from '../WorkspaceTabs/WorkspaceTabs';
 function ProjectWorkspace(){
     const params = useParams();
     const dispatch = useDispatch();
-    let formData = new FormData();
     
     const user = useSelector((store) => store.user);
     const thisProject = useSelector(store => {

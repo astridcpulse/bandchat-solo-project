@@ -2,7 +2,12 @@ import {useEffect, useState } from 'react';
 import { useDispatch, useSelector} from 'react-redux';
 import {useParams} from 'react-router-dom';
 
-import { ThemeProvider, createMuiTheme, ButtonGroup, Button, Typography } from '@mui/material';
+import {
+    ButtonGroup, 
+    Button, 
+    Typography,
+    Box 
+} from '@mui/material';
 
 import AudioRecorder from '../AudioRecorder/AudioRecorder';
 import Notes from '../Notes/Notes';
@@ -64,13 +69,16 @@ function PartWorkspace({part}){
         setRecordStatus(false);
         dispatch({
             type: 'DELETE_AUDIO',
-            payload: part.id
+            payload: {
+                partId: part.id,
+                projectId: params.id
+            }
         });
     }
 
     return(
         <div>
-            <ButtonGroup size='small' color='inherit'>
+            <ButtonGroup size='small' color='inherit' sx={{ px:5, pb:5}}>
                 <Button
                     onClick={() => setNotesStatus(true)}
                     sx={{m:0}}
@@ -95,42 +103,52 @@ function PartWorkspace({part}){
 
             {notesStatus 
                 && 
-            <div> 
+            <Box 
+                sx={{display:'flex'}}    
+            > 
                 <Notes
                     part={part}
                 /> 
                 <Button 
+                    sx={{px:5, ml: 5}}
                     color="error"
                     onClick={() => handleDeleteNotes()}
                 >
-                Delete</Button> 
-            </div>}  
+                Delete Notes</Button> 
+            </Box>}  
 
             {chordsStatus 
                 && 
-            <div> 
+            <Box
+                sx={{display:'flex'}}
+            > 
                 <Chords
+
                     part={part}
                 /> 
                 <Button 
+                    sx={{px:5, ml: 5}}
                     color="error"
                     onClick={() => handleDeleteChords()}
                 >
-                Delete</Button> 
-            </div>}  
+                Delete Chords</Button> 
+            </Box>}  
 
             {recordStatus 
                 && 
-            <div> 
+            <Box
+                sx={{display:'flex'}}
+            > 
                 <AudioRecorder 
                     part={part}
                 /> 
                 <Button 
+                    sx={{px:5, ml: 5}}
                     color="error"
                     onClick={() => handleDeleteAudio()}
                 >
-                Delete</Button> 
-            </div>}            
+                Delete Audio</Button> 
+            </Box>}            
         </div>
     )
 }

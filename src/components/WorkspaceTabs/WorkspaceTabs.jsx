@@ -101,7 +101,7 @@ function WorkspaceTabs(){
                     sx={{ borderBottom: 1, 
                         borderColor: "divider",
                         bgcolor: 'primary.light',
-                        p:10,
+                        p:2,
                         m:2,
                         display:"flex",
                         boxShadow: 6,
@@ -109,39 +109,34 @@ function WorkspaceTabs(){
 
                     }}
                 >
-                    <Stack
-                    >
-                    <Box
-                        display='flex'
-                        sx={{
-                            m: 5
-                        }}
-                    >
-                    <Typography 
-                        
-                        variant='h5'
-                    >
-                        {part.part_name}
-                    </Typography>
-                    <Button
-                        // sx={{size: 'small'}}
-                        value={part.id}
-                        
-                        variant="contained"
-                        color="error"
-                        onClick={(evt) => handleDeletePart(evt.target.value)}
-                    >
-                    Delete Part
-                    </Button>
-                    </Box>
+                    <Stack>
+                        <Box
+                            display='flex'
+                        >
+                            <Typography 
+                                sx={{m:5}}
+                                variant='h5'
+                            >
+                                {part.part_name}
+                            </Typography>
+                            <Button
+                                sx={{m:5}}
+                                value={part.id}
+                                variant="contained"
+                                color="error"
+                                onClick={(evt) => handleDeletePart(evt.target.value)}
+                            >
+                                Delete Part
+                            </Button>
+                        </Box>
 
-                    <Box>
-                    <PartWorkspace
-                        justifyContent="end"
-                        sx={{marginLeft: "auto"}}
-                        part={part}
-                    />
-                    </Box>
+                        <Box>
+                            <PartWorkspace
+                                justifyContent="end"
+                                sx={{marginLeft: "auto"}}
+                                part={part}
+                            />
+                        </Box>
                     </Stack>
                     
                 </Card>

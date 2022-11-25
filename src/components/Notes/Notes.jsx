@@ -27,8 +27,11 @@ function Notes({part}){
             //post to saga on submit
             onSubmit={() => handleSubmit()}
         >
-            <Stack>
+            <Stack
+                sx={{mx:5, width: 400}}
+            >
                 <TextField
+                   
                     defaultValue={part.notes = null ? '' : part.notes}
                     label='notes'
                     name='notes'

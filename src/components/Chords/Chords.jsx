@@ -102,7 +102,10 @@ function Chords ({part}){
 
     return(
 
-    <div>
+    <Box
+        sx={{mx:5, width: 400}}
+
+    >
         <h5>KEY: </h5>
         <form onSubmit={() => handleSubmit()}>
         <FormControl sx={{ m: 1, minWidth: 130 }}>
@@ -196,7 +199,7 @@ function Chords ({part}){
             Save
         </Button>
         </form>
-    </div>
+    </Box>
   );
 }
 
