@@ -81,8 +81,6 @@ function ProjectWorkspace(){
                     projectId={params.id}
                 />
 
-                
-
             <form
                 onSubmit={(evt) => handleCreatePart(evt)}
             >

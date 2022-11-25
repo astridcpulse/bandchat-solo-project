@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState} from 'react';
 
 import { Button, 
@@ -14,6 +13,9 @@ import { useDispatch, useSelector} from 'react-redux';
 import axios from 'axios';
 
 //passing up the specific project id as a prop
+//Not necessary, since we can get the ID through params.id, but keeping it this way in case
+// I decide to transfer this component back to <AllProjects> in the future
+
 function AddCollaborators({projectId}){
     const dispatch = useDispatch();
 
@@ -65,7 +67,11 @@ function AddCollaborators({projectId}){
         > 
             collaborators: 
         </Typography>
-
+        <List row>
+            {collaborator && collaborator.map((person) => 
+                <ListItem row>{person.username}</ListItem>
+            )}
+        </List>
         {/* TODO: NOT WORKING replace later with something suitable for presentation */}
         {/* <List>
             {collaborator && collaborator.map((personArr) => {

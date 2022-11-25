@@ -10,7 +10,6 @@ const collaboratorReducer = (state = [], action) => {
         console.log('action.payload', action.payload)
         return action.payload;
           
-
         // The Return for when <Collaborators> was in the <AllProjects> component
         // replaces the saved collaborator array with the newly updated one
 
@@ -22,6 +21,7 @@ const collaboratorReducer = (state = [], action) => {
         //     return projectArr;
         //   }
         // })
+        
       default:
         return state;
     }
