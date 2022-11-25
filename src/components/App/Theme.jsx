@@ -28,7 +28,7 @@ const Theme = createTheme({
         },
         text: {
             primary: 'rgba(255, 255, 255, 0.72)',
-            secondary: 'rgba(255, 255, 255, 0.60)',
+            secondary: 'rgba(255, 255, 255, 0.62)',
             disabled: 'rgba(255, 255, 255, 0.52)',
             black: '#000000'
         }
@@ -62,9 +62,8 @@ const Theme = createTheme({
         MuiTextField: {
             styleOverrides: {
                 root: {
-                    // color: '#000000',
+                    color: '#000000',
                     backgroundColor: '#D8D8D8',
-                    margin: 5,
                     
                 }
             }
@@ -72,10 +71,45 @@ const Theme = createTheme({
         MuiInputBase: {
             styleOverrides: {
                 root: {
+                    label:{
+                        color: '#000000',
+                    }
+                }
+            }
+        },
+        MuiOutlinedInput: {
+            styleOverrides: {
+                root: {
+                    backgroundColor: '#D8D8D8',
                     color: '#000000'
                 }
             }
         },
+        MuiAutocomplete: {
+            styleOverrides: {
+                root: {
+                    backgroundColor: '#000000',
+                    
+                }
+            }
+        },
+        MuiInputLabel: {
+            styleOverrides: {
+                root: {
+                    color: '#000000',
+                    
+                }
+            }
+        },
+        MuiMenuItem: {
+            styleOverrides: {
+                root: {
+                    color: '#000000',
+                    
+                }
+            }
+        },
+
         
         // MuiAutocomplete: {
         //     styleOverrides: {

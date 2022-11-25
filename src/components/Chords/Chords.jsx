@@ -134,6 +134,14 @@ function Chords ({part}){
         <FormControl sx={{ m: 1, minWidth: 140 }}>
             <InputLabel> Major/Minor </InputLabel>
             <Select 
+                // ListboxProps= {{
+                //     sx: {
+                //       color: '#000000',
+                //       bgcolor: 'secondary.dark',
+                //       border: 2,
+                //       fontWeight: 'bold'
+                //       }
+                //     }}
                 defaultValue={part.chord_mode === null ? '' : part.chord_mode } 
                 id="mode select" 
                 onChange={(evt) => dispatch({
