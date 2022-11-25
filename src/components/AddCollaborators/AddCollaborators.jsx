@@ -7,7 +7,8 @@ import { Button,
     List,
     ListItem,
     Typography,
-    ListboxProps
+    ListboxProps,
+    Divider
 } from '@mui/material';
 import { useDispatch, useSelector} from 'react-redux';
 import axios from 'axios';
@@ -27,7 +28,7 @@ function AddCollaborators({projectId}){
 
     useEffect(() => {
         fetchCollaborators();
-    },[])
+    },[value])
     // useSElector the store.collaborators and display them to the dom. 
     // put fetchCollaborators in a useEffect
 
@@ -50,6 +51,7 @@ function AddCollaborators({projectId}){
             type: 'ADD_COLLABORATOR',
             payload: projectId
         })
+        setValue([]);
     }
 
     const fetchCollaborators = () => {
@@ -62,16 +64,14 @@ function AddCollaborators({projectId}){
 
     return(
         <>
+         
         <Typography
             variant='h5'
-        > 
-            collaborators: 
-        </Typography>
-        <List row>
+        > Collaborators:
             {collaborator && collaborator.map((person) => 
-                <ListItem row>{person.username}</ListItem>
+                <> {person.username}, </>
             )}
-        </List>
+        </Typography>
         {/* TODO: NOT WORKING replace later with something suitable for presentation */}
         {/* <List>
             {collaborator && collaborator.map((personArr) => {
@@ -104,7 +104,7 @@ function AddCollaborators({projectId}){
             }}
             id="collaborator-input"
             options={allUsers.map((option) => `${option.username}, ID: ${option.id}`)}
-            renderInput={(params) => <TextField {...params} label="Collaborators" />}
+            renderInput={(params) => <TextField{...params} label="Collaborators" />}
             value={value}
             onChange={(event, newValue) => {
               setValue(newValue);
