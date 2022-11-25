@@ -1,4 +1,4 @@
-import { createTheme } from '@mui/material/styles';
+import { createTheme, experimental_sx as sx } from '@mui/material/styles';
 
 
 const Theme = createTheme({
@@ -8,8 +8,8 @@ const Theme = createTheme({
             contrastText:'#fff'
         },
         secondary: {
-            main:'#65b889',
-            // contrastText:''
+            main:'#92cbaa',
+            contrastText:'#fff'
         },
         error: {
             main:'#ef626c'
@@ -23,10 +23,14 @@ const Theme = createTheme({
         paper: {
             main:'#254a5a'
         },
+        action: {
+            // active: '#001E3C'
+        },
         text: {
             primary: 'rgba(255, 255, 255, 0.72)',
             secondary: 'rgba(255, 255, 255, 0.60)',
-            disabled: 'rgba(255, 255, 255, 0.52)'
+            disabled: 'rgba(255, 255, 255, 0.52)',
+            black: '#000000'
         }
     },
     typography: {
@@ -47,7 +51,40 @@ const Theme = createTheme({
                     backgroundColor: '#254a5a'
                 }
             }
-        }
+        },
+        MuiButton: {
+            styleOverrides: {
+                root: {
+                    margin: 12
+                }
+            }
+        },
+        MuiTextField: {
+            styleOverrides: {
+                root: {
+                    // color: '#000000',
+                    backgroundColor: '#D8D8D8',
+                    margin: 5,
+                    
+                }
+            }
+        },
+        MuiInputBase: {
+            styleOverrides: {
+                root: {
+                    color: '#000000'
+                }
+            }
+        },
+        
+        // MuiAutocomplete: {
+        //     styleOverrides: {
+        //         root: {
+        //             text: '#000000',
+        //             backgroundColor: '#254a5a'
+        //         }
+        //     }
+        // }
     }
 })
 // color for paper

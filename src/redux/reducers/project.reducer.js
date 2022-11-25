@@ -1,7 +1,3 @@
-// const DEFAULT_STATE= {
-//   loading: false
-// }
-
 
 
 const projectReducer = (state = [], action) => {

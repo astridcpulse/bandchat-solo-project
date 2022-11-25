@@ -92,7 +92,7 @@ function WorkspaceTabs(){
         <>
             <Stack
                 direction="column"
-                sx={{bgcolor: "whitesmoke", m:2 }}
+                sx={{bgcolor: "primary.light", m:2 }}
             >
                 {projectParts && projectParts.map((part) =>  
 
@@ -100,9 +100,13 @@ function WorkspaceTabs(){
                     key={part.id}
                     sx={{ borderBottom: 1, 
                         borderColor: "divider",
+                        bgcolor: 'primary.light',
                         p:10,
                         m:2,
-                        display:"flex" 
+                        display:"flex",
+                        boxShadow: 6,
+                        border: 2
+
                     }}
                 >
                     {part.part_name}

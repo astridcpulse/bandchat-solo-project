@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import { useDispatch, useSelector} from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
-import AddCollaborators from '../AddCollaborators/AddCollaborators'
+// import AddCollaborators from '../AddCollaborators/AddCollaborators'
 import { 
         Button,
         OutlinedInput,
@@ -11,7 +11,8 @@ import {
         Box,
         Stack,
         Card,
-        CardActionArea
+        CardActionArea,
+        Typography
       } from '@mui/material';
 
 
@@ -57,8 +58,7 @@ function AllProjectsPage() {
   return (
     <div className="container">
       <h2>Welcome, {user.username}!</h2>
-      {/* <p>Your ID is: {user.id}</p>
-      <LogOutButton className="btn" /> */}
+      
       <OutlinedInput 
         onChange={(evt) => setNewProject(evt.target.value)}
         placeholder="new project name"
@@ -76,18 +76,32 @@ function AllProjectsPage() {
       {projects.map(project => 
       
         <Card 
-          sx={{width: 500, m: 1, bgcolor: 'primary.light', border:2}}
+          sx={{
+            width: 500, 
+            borderBottom: 1, 
+            borderColor: "divider",
+            bgcolor: 'primary.light',
+            p: 3,
+            m:2,
+            boxShadow: 6,
+            border: 2
+          }}
           key={project.id}
         >
           <CardActionArea>
-            <h3 
+            <Typography 
+              variant='h4'
+              font
               onClick={() => history.push(`/workspace/${project.id}` )}
-              
-            >{project.project_name}</h3>
+            >
+              {project.project_name}
+            </Typography>
           </CardActionArea>
-            <AddCollaborators 
+          {/* removed <AddCollaborators> and moved to ProjectWorkspace. In future
+          move back, add <Helpers> to individual parts */}
+            {/* <AddCollaborators 
               projectId={project.id}
-            />
+            /> */}
             <Button
               variant="contained"
               color="error"
