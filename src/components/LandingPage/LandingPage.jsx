@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import './LandingPage.css';
 import {
   Card,
-  Box
+  Box,
+  Typography
 }   from '@mui/material';  
 
 import RegisterForm from '../RegisterForm/RegisterForm';
@@ -18,7 +18,10 @@ function LandingPage() {
 
   return (
     <Box className="container">
-      <h1>{heading}</h1>
+      <Typography 
+        variant='h1'
+        sx={{fontFamily: 'Rubik Glitch'}}
+      >{heading}</Typography>
 
       <div className="grid">
         <div className="grid-col grid-col_8">
