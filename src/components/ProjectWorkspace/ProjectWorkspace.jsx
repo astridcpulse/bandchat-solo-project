@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import {useEffect, useState } from 'react';
+import AddCollaborators from '../AddCollaborators/AddCollaborators'
 
 import { useParams } from 'react-router-dom';
 
@@ -9,10 +10,8 @@ import { ThemeProvider,
         createMuiTheme, 
         Button, 
         Typography,
-        
         } 
         from '@mui/material';
-import { useLocation } from "react-router-dom";
 
 import WorkspaceTabs from '../WorkspaceTabs/WorkspaceTabs';
 
@@ -34,12 +33,12 @@ function ProjectWorkspace(){
     }, [params.id])
  
 
-    //dummy data for helper search and add
-    const helpers = [
-        {label: 'Cara'},
-        {label: 'Elena'},
-        {label: 'Ohna'}
-    ];
+    //dummy data for <Helper> search and add
+    // const helpers = [
+    //     {label: 'Cara'},
+    //     {label: 'Elena'},
+    //     {label: 'Ohna'}
+    // ];
 
     const handleCreatePart = (event) => {
         event.preventDefault();
@@ -64,15 +63,25 @@ function ProjectWorkspace(){
                 align='center'
             > PROJECT OWNER: {user.username}</Typography>
 
-            {/* MUI auto complete, filled with dummy data BUT working
+            {/* HELPER MUI auto complete, filled with dummy data BUT working
             TODO: get a store of your current collaborators for this to reference */}
-            <Autocomplete
+            {/* <Autocomplete
                 disablePortal
                 id="helper-input"
                 options={helpers}
                 sx={{ width: 300 }}
                 renderInput={(params) => <TextField {...params} label="Helpers" />}
-            />
+            /> */}
+
+            {/* COLLABORATOR component moved into project workspace, helpers removed.
+                In future versions moved <Collaborators> to All Projects, and then 
+                <Helpers> to individual parts */}
+
+                <AddCollaborators
+                    projectId={params.id}
+                />
+
+                
 
             <form
                 onSubmit={(evt) => handleCreatePart(evt)}

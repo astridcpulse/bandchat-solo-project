@@ -6,8 +6,9 @@ function* postProject(action){
     yield axios.post('/api/projects', {name: action.payload});
 
     //gets the new projects, now with posted project
-    yield put({type:'FETCH_PROJECTS'});
+    yield put({type:'FETCH_ALL_PROJECTS'});
 }
+
 //gets a project, sends it to reducer
 function* fetchAllProjects() {
         let response = yield axios.get(`/api/projects/`);

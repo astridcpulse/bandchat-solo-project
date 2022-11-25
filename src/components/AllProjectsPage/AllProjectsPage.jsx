@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import { useDispatch, useSelector} from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
-import AddCollaborators from '../AddCollaborators/AddCollaborators'
+// import AddCollaborators from '../AddCollaborators/AddCollaborators'
 import { 
         Button,
         OutlinedInput,
@@ -97,9 +97,11 @@ function AllProjectsPage() {
               {project.project_name}
             </Typography>
           </CardActionArea>
-            <AddCollaborators 
+          {/* removed <AddCollaborators> and moved to ProjectWorkspace. In future
+          move back, add <Helpers> to individual parts */}
+            {/* <AddCollaborators 
               projectId={project.id}
-            />
+            /> */}
             <Button
               variant="contained"
               color="error"

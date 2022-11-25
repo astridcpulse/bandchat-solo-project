@@ -39,12 +39,15 @@ function AddCollaborators({projectId}){
 
             // console.log('userid', userId)
             // posting the user id number, and the passed up project id number
-            axios.post('/api/collaborators', {userId: userId, projectId: projectId });
-            
-           
-            
+            dispatch({
+                type: 'POST_COLLABORATORS',
+                payload: {userId: userId, projectId: projectId }
+            })
         }
-        fetchCollaborators();
+        dispatch({
+            type: 'ADD_COLLABORATOR',
+            payload: projectId
+        })
     }
 
     const fetchCollaborators = () => {
@@ -52,8 +55,9 @@ function AddCollaborators({projectId}){
             type: 'FETCH_COLLABORATORS',
             payload: projectId
         })
-       
     }
+    // console.log('colabborator', collaborator[0][0].username);
+
     return(
         <>
         <Typography
@@ -61,16 +65,16 @@ function AddCollaborators({projectId}){
         > 
             collaborators: 
         </Typography>
-        <List row>
-            {collaborator && collaborator.map((person) => {
-                if(person.project_id === projectId){
-                    return(
-                        <ListItem> {person.username} </ListItem>  
-                    )
+
+        {/* TODO: NOT WORKING replace later with something suitable for presentation */}
+        {/* <List>
+            {collaborator && collaborator.map((personArr) => {
+                if(personArr[0].project_id === projectId){
+                    return <ListItem> {person.username} </ListItem> 
+                    
                 }
             })}
-            
-        </List>
+        </List> */}
         
         <form
             onSubmit={postCollaborators}
