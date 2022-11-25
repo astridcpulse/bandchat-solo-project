@@ -109,21 +109,41 @@ function WorkspaceTabs(){
 
                     }}
                 >
-                    {part.part_name}
-                    <PartWorkspace
-                        justifyContent="end"
-                        sx={{marginLeft: "auto"}}
-                        part={part}
-                    />
+                    <Stack
+                    >
+                    <Box
+                        display='flex'
+                        sx={{
+                            m: 5
+                        }}
+                    >
+                    <Typography 
+                        
+                        variant='h5'
+                    >
+                        {part.part_name}
+                    </Typography>
                     <Button
                         // sx={{size: 'small'}}
                         value={part.id}
+                        
                         variant="contained"
                         color="error"
                         onClick={(evt) => handleDeletePart(evt.target.value)}
                     >
                     Delete Part
                     </Button>
+                    </Box>
+
+                    <Box>
+                    <PartWorkspace
+                        justifyContent="end"
+                        sx={{marginLeft: "auto"}}
+                        part={part}
+                    />
+                    </Box>
+                    </Stack>
+                    
                 </Card>
                 )}
             </Stack>

@@ -49,6 +49,7 @@ function ProjectWorkspace(){
                 projectId: params.id
             }
         })
+        event.target.partname.value='';
     }
 
     return (
