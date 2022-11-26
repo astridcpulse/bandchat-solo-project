@@ -32,8 +32,8 @@ function AboutPage() {
           </Typography>
         </Box>
         <Typography 
-          sx={{m:3, }}
-          variant='h4'
+          sx={{m:3, maxWidth: '70ch'}}
+          variant='h5'
         >
           BandChat is a workspace for musicians to collaborate together on their musical projects without stepping on each other's toes. Everyone can have their own workspace, and with BandChat you wont need to wait til rehearsal to find out what your drummer has been up to!
         </Typography>
@@ -50,9 +50,10 @@ function AboutPage() {
       >
         <Stack>
         <Typography 
-          sx={{m: 2}}
-          variant='h5'
+          sx={{m: 2, maxWidth: '80ch'}}
+          variant='h6'
           color='text.secondary'
+          
         > 
           BandChat is solely developed and maintained by Astrid Pulse. She sings and plays guitar. She's the total package. </Typography>
          
