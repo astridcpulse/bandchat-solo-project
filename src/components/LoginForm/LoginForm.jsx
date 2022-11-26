@@ -40,7 +40,7 @@ function LoginForm() {
       sx={{
         boxShadow: 5,
         p: 5,
-        width: '40%',
+        width: 350,
         display: 'flex',
         justifyContent: 'left',
         fontFamily: 'Helvetica, sans-serif',

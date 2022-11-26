@@ -40,7 +40,11 @@ function App() {
     
       <ThemeProvider theme={Theme}>
         <Paper
-      sx={{backgroundColor: 'paper.main', height: '100vh'}}
+      sx={{
+        backgroundColor: 'paper.main', 
+        // height: '100vh', 
+        width:'100vw'
+    }}
       >
       <Router>
         <div>

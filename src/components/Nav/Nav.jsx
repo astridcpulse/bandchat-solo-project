@@ -21,7 +21,10 @@ function Nav() {
   return (
     <Container 
       sx={{
-        display: 'flex'
+        display: 'flex',
+        bgcolor: 'primary.dark',
+        width: '100%',
+        mx:0
       }}
       className="nav"
     >
@@ -29,7 +32,7 @@ function Nav() {
         <Typography 
           sx={{
             fontFamily: 'Rubik Glitch',
-            color: 'secondary.light'
+            color: 'rgba(255, 255, 255, 0.72)'
           }}
           variant='h2' 
           className="nav-title"

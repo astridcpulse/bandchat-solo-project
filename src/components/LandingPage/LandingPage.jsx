@@ -19,10 +19,16 @@ function LandingPage() {
   };
 
   return (
-    <Container className="container-default">
+    <Container 
+      sx={{
+        pt: 20
+      }}
+      align='center' 
+      className="container-default"
+    >
       <Typography 
         variant='h1'
-        sx={{fontFamily: 'Rubik Glitch'}}
+        sx={{fontFamily: 'Rubik Glitch', mb:4}}
       >{heading}</Typography>
 
       <div className="grid">
@@ -36,7 +42,7 @@ function LandingPage() {
             <Typography
               sx={{mt: 5}}
             >
-              Already a Member?
+              Already a BandChatter?
             </Typography>
             <Button 
               sx={{color: 'secondary.light', borderColor:'secondary.light'}}

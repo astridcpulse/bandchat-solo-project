@@ -1,7 +1,6 @@
 import React from 'react';
 import './Footer.css';
-import { Container } from '@mui/material';
-
+import { Container, Link } from '@mui/material';
 
 function Footer() {
   return (
