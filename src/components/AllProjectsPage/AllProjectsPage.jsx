@@ -47,11 +47,14 @@ function AllProjectsPage() {
   }
 
   //dispatches project to saga, redux store, and posts to database
-  const postProject = () => {
+  const postProject = (event) => {
     dispatch({ 
       type: 'POST_PROJECT', 
       payload: newProject 
+
     });
+    document.getElementById('partname').value='';
+
   }
 
 
@@ -65,6 +68,7 @@ function AllProjectsPage() {
       <OutlinedInput 
         onChange={(evt) => setNewProject(evt.target.value)}
         placeholder="new project name"
+        id='partname'
       ></OutlinedInput>
 
       <Button 

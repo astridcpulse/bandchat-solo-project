@@ -15,8 +15,8 @@ function AudioRecorder({part}){
     // const [soundBlob, setSoundBlob] = useState('');
 
   // start mic recorder function
-    const start = () => {
-      
+    const start = (evt) => {
+      evt.preventDefault();
         Recorder
           .start()
           .then(() => {
@@ -28,8 +28,9 @@ function AudioRecorder({part}){
     }
 
   // stop mic recorder function
-  const stop = () => {
-      
+  const stop = (evt) => {
+    evt.preventDefault();
+
       Recorder
         .stop()
         .getMp3()
@@ -58,14 +59,14 @@ function AudioRecorder({part}){
           sx={{mx:5, width: 400}}
         >
             <Button
-              onClick={() => start()}
+              onClick={(evt) => start(evt)}
               variant={buttonDisplay ? "outlined" : "contained"}
             >
               Record
             </Button>
 
             <Button 
-              onClick={() => stop()}
+              onClick={(evt) => stop(evt)}
               variant={buttonDisplay ? "contained" : "outlined" }
             >
               Stop
