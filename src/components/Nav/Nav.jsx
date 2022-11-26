@@ -1,17 +1,21 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { 
+  // Link, 
+  useHistory } from 'react-router-dom';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import { useSelector } from 'react-redux';
 
 import { 
   Typography,
-  Container
+  Container,
+  Button,
+  Link
 } from '@mui/material';
 
 import './Nav.css';
 function Nav() {
   const user = useSelector((store) => store.user);
-  
+  const history = useHistory();
 
   
   return (
@@ -21,7 +25,7 @@ function Nav() {
       }}
       className="nav"
     >
-      <Link to="/home">
+      <Link variant='inherit' underline='none' href="/home">
         <Typography 
           sx={{
             fontFamily: 'Rubik Glitch',
@@ -29,28 +33,42 @@ function Nav() {
           }}
           variant='h2' 
           className="nav-title"
-        >BandChat</Typography>
+        >
+          BandChat
+        </Typography>
       </Link>
       <div>
         {/* If no user is logged in, show these links */}
         {!user.id && (
           // If there's no user, show login/registration links
-          <Link className="navLink" to="/login">
-            Login / Register
-          </Link>
+
+          <Button 
+            sx={{color: 'secondary.light', borderColor:'secondary.light', mx: 10}}
+            variant='outlined' 
+            className='navLink' 
+            onClick={() => {
+            history.push('/login');
+          }}>
+          Login /Register
+          </Button>
         )}
 
         {/* If a user is logged in, show these links */}
         {user.id && (
           <>
-            
             <LogOutButton className="navLink" />
           </>
         )}
-
-        <Link className="navLink" to="/about">
+        <Button 
+          sx={{color: 'secondary.light', borderColor:'secondary.light'}}
+          variant='outlined' 
+          className='navLink' 
+          onClick={() => {
+            history.push('/about');
+          }}>
           About
-        </Link>
+        </Button>
+        
       </div>
     </Container>
   );
