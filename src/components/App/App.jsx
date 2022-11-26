@@ -44,7 +44,7 @@ function App() {
       >
       <Router>
         <div>
-          <Nav />
+          
           <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
             <Redirect exact from="/" to="/home" />
@@ -55,6 +55,7 @@ function App() {
               exact
               path="/about"
             >
+              <Nav />
               <AboutPage />
             </Route>
 
@@ -67,6 +68,7 @@ function App() {
               exact
               path="/projects"
             >
+              <Nav />
               <AllProjectsPage />
             </ProtectedRoute>
 
@@ -115,13 +117,14 @@ function App() {
 
             <ProtectedRoute path='/workspace/:id' exact>
             
-            
+              <Nav />
               <ProjectWorkspace />
             </ProtectedRoute>    
             
 
             {/* If none of the other routes matched, we will show a 404. */}
             <Route>
+              <Nav />
               <h1>404</h1>
             </Route>
           </Switch>
