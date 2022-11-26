@@ -25,9 +25,12 @@ function AboutPage() {
       <Box
         sx={{px:2, pt:7}}
       >
-        <Typography variant='h4' sx={{fontFamily: 'Rubik Glitch'}}> 
-          What is a BandChat?
-        </Typography>
+        <Box sx={{display: 'flex'}}>
+          <Typography variant='h4' sx={{m:1}}>What is a </Typography>
+          <Typography variant='h3' sx={{m:1, fontFamily: 'Rubik Glitch'}}> 
+            BandChat?
+          </Typography>
+        </Box>
         <Typography 
           sx={{m:3, }}
           variant='h4'
