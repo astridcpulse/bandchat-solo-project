@@ -4,7 +4,9 @@ import {
   Card,
   Box,
   Typography,
-  OutlinedInput
+  OutlinedInput,
+  Input,
+  Button
 }   from '@mui/material';
 
 function RegisterForm() {
@@ -32,7 +34,9 @@ function RegisterForm() {
         p: 5,
         width: '40%',
         display: 'flex',
-        justifyContent: 'left'
+        justifyContent: 'left',
+        fontFamily: 'Helvetica, sans-serif',
+        
       }}
     >
     <form className="formPanel" onSubmit={registerUser}>
@@ -47,12 +51,16 @@ function RegisterForm() {
             {errors.registrationMessage}
           </h3>
         )}
-        <Box>
+        <Box
+          sx={{display: 'flex' }}
+          >
           <label htmlFor="username">
             Username:
             <OutlinedInput
               sx={{
-                height: 30
+                justifyContent: 'align-right',
+                height: 30,
+
               }}
               type="text"
               name="username"
@@ -67,7 +75,9 @@ function RegisterForm() {
             Password:
             <OutlinedInput
               sx={{
-                height: 30
+                justifyContent: 'align-right',
+
+                height: 30,
               }}
               type="password"
               name="password"
@@ -78,7 +88,9 @@ function RegisterForm() {
           </label>
         </Box>
         <div>
-          <input className="btn" type="submit" name="submit" value="Register" />
+          <Button variant='contained' className="btn" type="submit" name="submit" value="Register">
+              Register
+          </Button>
         </div>
       </Box>
     </form>
