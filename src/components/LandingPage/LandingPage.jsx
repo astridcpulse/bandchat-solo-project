@@ -3,7 +3,8 @@ import { useHistory } from 'react-router-dom';
 import {
   Card,
   Box,
-  Typography
+  Typography,
+  Container
 }   from '@mui/material';  
 
 import RegisterForm from '../RegisterForm/RegisterForm';
@@ -17,7 +18,7 @@ function LandingPage() {
   };
 
   return (
-    <Box className="container">
+    <Container className="container-default">
       <Typography 
         variant='h1'
         sx={{fontFamily: 'Rubik Glitch'}}
@@ -38,7 +39,7 @@ function LandingPage() {
           </center>
         </div>
       </div>
-    </Box>
+    </Container>
   );
 }
 

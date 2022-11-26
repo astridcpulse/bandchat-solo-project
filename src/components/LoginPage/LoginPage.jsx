@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import LoginForm from '../LoginForm/LoginForm';
 import { useHistory } from 'react-router-dom';
+import './LoginPage.css';
+import {
+  Container
+} from '@mui/material';
 
 function LoginPage() {
   const history = useHistory();
 
   return (
-    <div>
+    <Container className='container-default'>
       <LoginForm />
 
       <center>
@@ -23,7 +27,7 @@ function LoginPage() {
       </center>
         
 
-    </div>
+    </Container>
   );
 }
 

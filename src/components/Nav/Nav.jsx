@@ -4,7 +4,8 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 import { useSelector } from 'react-redux';
 
 import { 
-  Typography 
+  Typography,
+  Container
 } from '@mui/material';
 
 import './Nav.css';
@@ -14,9 +15,21 @@ function Nav() {
 
   
   return (
-    <div className="nav">
+    <Container 
+      sx={{
+        display: 'flex'
+      }}
+      className="nav"
+    >
       <Link to="/home">
-        <h2 className="nav-title">BandChat</h2>
+        <Typography 
+          sx={{
+            fontFamily: 'Rubik Glitch',
+            color: 'secondary.light'
+          }}
+          variant='h2' 
+          className="nav-title"
+        >BandChat</Typography>
       </Link>
       <div>
         {/* If no user is logged in, show these links */}
@@ -39,7 +52,7 @@ function Nav() {
           About
         </Link>
       </div>
-    </div>
+    </Container>
   );
 }
 

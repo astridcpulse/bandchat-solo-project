@@ -2,12 +2,15 @@ import React from 'react';
 
 import { useHistory } from 'react-router-dom';
 import RegisterForm from '../RegisterForm/RegisterForm';
+import {
+  Container
+} from '@mui/material';
 
 function RegisterPage() {
   const history = useHistory();
 
   return (
-    <div>
+    <Container className='container-default'>
       <RegisterForm />
 
       <center>
@@ -21,7 +24,7 @@ function RegisterPage() {
           Login
         </button>
       </center>
-    </div>
+    </Container>
   );
 }
 
