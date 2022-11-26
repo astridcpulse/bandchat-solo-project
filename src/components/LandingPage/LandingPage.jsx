@@ -4,7 +4,8 @@ import {
   Card,
   Box,
   Typography,
-  Container
+  Container,
+  Button
 }   from '@mui/material';  
 
 import RegisterForm from '../RegisterForm/RegisterForm';
@@ -32,10 +33,19 @@ function LandingPage() {
           <RegisterForm />
 
           <center>
-            <h4>Already a Member?</h4>
-            <button className="btn btn_sizeSm" onClick={onLogin}>
+            <Typography
+              sx={{mt: 5}}
+            >
+              Already a Member?
+            </Typography>
+            <Button 
+              sx={{color: 'secondary.light', borderColor:'secondary.light'}}
+              variant='outlined' 
+              className="btn btn_sizeSm" 
+              onClick={onLogin}
+            >
               Login
-            </button>
+            </Button>
           </center>
         </div>
       </div>
