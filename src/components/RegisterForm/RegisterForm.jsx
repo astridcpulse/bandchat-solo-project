@@ -60,7 +60,7 @@ function RegisterForm() {
               sx={{
                 justifyContent: 'align-right',
                 height: 30,
-
+                m:1
               }}
               type="text"
               name="username"
@@ -76,8 +76,8 @@ function RegisterForm() {
             <OutlinedInput
               sx={{
                 justifyContent: 'align-right',
-
                 height: 30,
+                m:1
               }}
               type="password"
               name="password"

@@ -2,7 +2,15 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import {useSelector} from 'react-redux';
 import './LoginForm.css';
-import { Container } from '@mui/material';
+import {
+  Card,
+  Box,
+  Typography,
+  OutlinedInput,
+  Input,
+  Button,
+  Container
+}   from '@mui/material';
 
 function LoginForm() {
   const [username, setUsername] = useState('');
@@ -28,18 +36,40 @@ function LoginForm() {
   }; // end login
 
   return (
-    <Container className='container-default'>
+    <Card 
+      sx={{
+        boxShadow: 5,
+        p: 5,
+        width: '40%',
+        display: 'flex',
+        justifyContent: 'left',
+        fontFamily: 'Helvetica, sans-serif',
+        
+      }}
+    >
     <form className="formPanel" onSubmit={login}>
-      <h2>Login</h2>
+    <Box sx={{ 
+        display: 'inline-flex',
+        flexDirection: 'column',
+        justifyContent: 'center'
+      }}>
+      <Typography variant='h5'>Login</Typography>
       {errors.loginMessage && (
         <h3 className="alert" role="alert">
           {errors.loginMessage}
         </h3>
       )}
-      <div>
+      <Box
+        sx={{display:'flex'}}  
+      >
         <label htmlFor="username">
           Username:
-          <input
+          <OutlinedInput
+            sx={{
+              justifyContent: 'align-right',
+              height: 30,
+              m:1
+            }}
             type="text"
             name="username"
             required
@@ -47,11 +77,16 @@ function LoginForm() {
             onChange={(event) => setUsername(event.target.value)}
           />
         </label>
-      </div>
-      <div>
+      </Box>
+      <Box>
         <label htmlFor="password">
           Password:
-          <input
+          <OutlinedInput
+            sx={{
+              justifyContent: 'align-right',
+              height: 30,
+              m:1
+            }}
             type="password"
             name="password"
             required
@@ -59,12 +94,15 @@ function LoginForm() {
             onChange={(event) => setPassword(event.target.value)}
           />
         </label>
-      </div>
+      </Box>
       <div>
-        <input className="btn" type="submit" name="submit" value="Log In" />
+        <Button variant='contained' className="btn" type="submit" name="submit" value="Log In">
+            Login
+        </Button>
       </div>
+      </Box>
     </form>
-    </Container>
+    </Card>
   );
 }
 

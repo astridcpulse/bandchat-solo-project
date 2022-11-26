@@ -11,7 +11,9 @@ function LoginPage() {
   const history = useHistory();
 
   return (
-    <Container className='container-default'>
+    <Container 
+      align='center'
+      className='container-default'>
       <LoginForm />
 
       <center>
