@@ -56,7 +56,10 @@ function AllProjectsPage() {
 
 
   return (
-    <div className="container">
+    <Box 
+      sx={{px: 5}}
+      className="container"
+    >
       <h2>Welcome, {user.username}!</h2>
       
       <OutlinedInput 
@@ -119,7 +122,7 @@ function AllProjectsPage() {
 
       {/* TODO when all projects are listed out, pressing on one will push history to project workplace page */}
 
-    </div>
+    </Box>
   );
 }
 

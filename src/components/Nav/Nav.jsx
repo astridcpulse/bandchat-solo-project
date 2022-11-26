@@ -3,9 +3,16 @@ import { Link } from 'react-router-dom';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import { useSelector } from 'react-redux';
 
+import { 
+  Typography 
+} from '@mui/material';
+
+import './Nav.css';
 function Nav() {
   const user = useSelector((store) => store.user);
+  
 
+  
   return (
     <div className="nav">
       <Link to="/home">

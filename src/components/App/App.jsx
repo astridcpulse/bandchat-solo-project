@@ -14,7 +14,7 @@ import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
-
+import './App.css'
 import AboutPage from '../AboutPage/AboutPage';
 import AllProjectsPage from '../AllProjectsPage/AllProjectsPage';
 import LandingPage from '../LandingPage/LandingPage';
@@ -40,8 +40,8 @@ function App() {
     
       <ThemeProvider theme={Theme}>
         <Paper
-      sx={{backgroundColor: 'paper.main' }}
-    >
+      sx={{backgroundColor: 'paper.main'}}
+      >
       <Router>
         <div>
           <Nav />
