@@ -60,7 +60,7 @@ function AllProjectsPage() {
 
   return (
     <Box 
-      sx={{px: 5}}
+      sx={{px: 5, height: '85vh'}}
       className="container"
     >
       <Typography 
@@ -101,8 +101,11 @@ function AllProjectsPage() {
       
       {user.id && (
       <Box 
-        display='flex'
-        justifyContent='wrap'
+        sx={{
+          display:'flex',
+          wrap:'wrap' 
+        }}
+        
       >
       {projects.map(project => 
       
@@ -115,7 +118,8 @@ function AllProjectsPage() {
             p: 3,
             m:2,
             boxShadow: 6,
-            border: 2
+            border: 2,
+            
           }}
           key={project.id}
         >
