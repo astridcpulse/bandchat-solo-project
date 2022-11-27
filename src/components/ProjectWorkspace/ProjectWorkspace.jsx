@@ -10,6 +10,7 @@ import { ThemeProvider,
         createMuiTheme, 
         Button, 
         Typography,
+        Container
         } 
         from '@mui/material';
 
@@ -53,51 +54,54 @@ function ProjectWorkspace(){
 
     return (
         <>
-            <Typography 
-                variant="h3"
-                align='center'
-            > {thisProject.project_name}</Typography>
+            <Container
+                // sx={{px: 5}}
+            >    
+                <Typography 
+                    variant="h3"
+                    align='center'
+                > {thisProject.project_name}</Typography>
 
-            <Typography 
-                variant="h5"
-                align='center'
-            > PROJECT OWNER: {user.username}</Typography>
+                <Typography 
+                    variant="h5"
+                    align='center'
+                > PROJECT OWNER: {user.username}</Typography>
 
-            {/* HELPER MUI auto complete, filled with dummy data BUT working
-            TODO: get a store of your current collaborators for this to reference */}
-            {/* <Autocomplete
-                disablePortal
-                id="helper-input"
-                options={helpers}
-                sx={{ width: 300 }}
-                renderInput={(params) => <TextField {...params} label="Helpers" />}
-            /> */}
+                {/* HELPER MUI auto complete, filled with dummy data BUT working
+                TODO: get a store of your current collaborators for this to reference */}
+                {/* <Autocomplete
+                    disablePortal
+                    id="helper-input"
+                    options={helpers}
+                    sx={{ width: 300 }}
+                    renderInput={(params) => <TextField {...params} label="Helpers" />}
+                /> */}
 
-            {/* COLLABORATOR component moved into project workspace, helpers removed.
-                In future versions moved <Collaborators> to All Projects, and then 
-                <Helpers> to individual parts */}
+                {/* COLLABORATOR component moved into project workspace, helpers removed.
+                    In future versions moved <Collaborators> to All Projects, and then 
+                    <Helpers> to individual parts */}
 
-                <AddCollaborators
-                    projectId={params.id}
-                />
+                    <AddCollaborators
+                        projectId={params.id}
+                    />
 
-            <form
-                onSubmit={(evt) => handleCreatePart(evt)}
-            >
-                <TextField
-                    name="partname"
-                    placeholder='new part name'
-                />
-                
-                <Button
-                    type='submit'
-                    variant="contained" 
-                > 
-                    + part
-                </Button>
-            </form>
-            <WorkspaceTabs />
-
+                <form
+                    onSubmit={(evt) => handleCreatePart(evt)}
+                >
+                    <TextField
+                        name="partname"
+                        placeholder='new part name'
+                    />
+                    
+                    <Button
+                        type='submit'
+                        variant="contained" 
+                    > 
+                        + part
+                    </Button>
+                </form>
+                <WorkspaceTabs />
+            </Container>
         </>
     );
 }

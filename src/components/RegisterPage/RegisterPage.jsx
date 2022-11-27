@@ -2,6 +2,9 @@ import React from 'react';
 
 import { useHistory } from 'react-router-dom';
 import RegisterForm from '../RegisterForm/RegisterForm';
+
+import './RegisterPage.css';
+
 import {
   Container,
   Button
@@ -29,6 +32,7 @@ function RegisterPage() {
           Login
         </Button>
       </center>
+      
     </Container>
   );
 }

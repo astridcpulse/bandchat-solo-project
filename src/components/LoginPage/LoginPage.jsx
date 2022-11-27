@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
 import LoginForm from '../LoginForm/LoginForm';
 import { useHistory } from 'react-router-dom';
+
+import './LoginPage.css'
+
 import {
   Container,
   Button,
   Typography
 } from '@mui/material';
+
+
 
 function LoginPage() {
   const history = useHistory();
@@ -18,21 +23,27 @@ function LoginPage() {
         pt: 20
       }}
       align='center'
-      className='container-default'>
+      className='content'>
 
       <Typography 
           variant='h1'
-          sx={{fontFamily: 'Rubik Glitch', mb:4}}
+          sx={{
+            fontFamily: 'Rubik Glitch',
+            mb:4,
+            color: 'text.bandchat'
+          }}
+          className='title content'
+          
       >{heading}</Typography>
-
-      <LoginForm />
-
-      <center>
+      <div className='content'>
+        <LoginForm  />
+      </div>
+      <center class='content'>
         <Button
           sx={{color: 'secondary.light', borderColor:'secondary.light'}}
           variant='outlined'
           type="button"
-          className="btn btn_asLink"
+          className='btn'
           onClick={() => {
             history.push('/home');
           }}
@@ -43,7 +54,9 @@ function LoginPage() {
       
       </center>
         
-
+      <video autoPlay muted loop id="myVideo">
+        <source src="/videos/rooftop_band.mp4" type="video/mp4"/>
+      </video>
     </Container>
 
 

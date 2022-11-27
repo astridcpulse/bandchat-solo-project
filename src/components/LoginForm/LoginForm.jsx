@@ -42,9 +42,10 @@ function LoginForm() {
         p: 5,
         width: 350,
         display: 'flex',
-        justifyContent: 'left',
+        justifyContent: 'center',
         fontFamily: 'Helvetica, sans-serif',
-        
+        border:2,
+        borderColor: 'secondary.light'
       }}
     >
     <form className="formPanel" onSubmit={login}>
@@ -96,7 +97,7 @@ function LoginForm() {
         </label>
       </Box>
       <div>
-        <Button variant='contained' className="btn" type="submit" name="submit" value="Log In">
+        <Button variant='contained' type="submit" name="submit" value="Log In">
             Login
         </Button>
       </div>

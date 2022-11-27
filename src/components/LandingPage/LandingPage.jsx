@@ -5,8 +5,10 @@ import {
   Box,
   Typography,
   Container,
-  Button
+  Button,
+  CardMedia
 }   from '@mui/material';  
+import './LandingPage.css';
 
 import RegisterForm from '../RegisterForm/RegisterForm';
 
@@ -24,18 +26,24 @@ function LandingPage() {
         pt: 20
       }}
       align='center' 
-      className="container-default"
+      className="content"
+      
     >
       <Typography 
+        className='content'
         variant='h1'
-        sx={{fontFamily: 'Rubik Glitch', mb:4}}
+        sx={{
+          fontFamily: 'Rubik Glitch', 
+          mb:4,
+
+        }}
       >{heading}</Typography>
 
-      <div className="grid">
-        <div className="grid-col grid-col_8">
+      <div className="content">
+        <div>
           
         </div>
-        <div className="grid-col grid-col_4">
+        <div>
           <RegisterForm />
 
           <center>
@@ -55,6 +63,10 @@ function LandingPage() {
           </center>
         </div>
       </div>
+      
+      <video autoPlay muted loop id="myVideo">
+        <source src="/videos/rooftop_band.mp4" type="video/mp4"/>
+      </video>
     </Container>
   );
 }

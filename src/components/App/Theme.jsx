@@ -30,7 +30,8 @@ const Theme = createTheme({
             primary: 'rgba(255, 255, 255, 0.72)',
             secondary: 'rgba(255, 255, 255, 0.62)',
             disabled: 'rgba(255, 255, 255, 0.52)',
-            black: '#000000'
+            black: '#000000',
+            bandchat: 'rgba(255, 255, 255, .9)',
         }
     },
     typography: {

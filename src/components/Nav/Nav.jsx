@@ -18,11 +18,11 @@ function Nav() {
   
   return (
     <Container 
+      maxWidth
       sx={{
         display: 'flex',
         bgcolor: 'primary.dark',
-        width: '100%',
-        mx:0
+        boxShadow: 5
       }}
       className="nav"
     >

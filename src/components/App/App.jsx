@@ -22,7 +22,6 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import ProjectWorkspace from '../ProjectWorkspace/ProjectWorkspace';
 
-
 import Theme from './Theme.jsx';
 
 import './App.css';
@@ -39,12 +38,11 @@ function App() {
   return (
     
       <ThemeProvider theme={Theme}>
-        <Paper
-          // background-image='images/bad_brains.jpeg'
+        <Paper          
           sx={{
             backgroundColor: 'paper.main', 
             // height: '100vh', 
-            width:'100vw'
+            width:'100vw',
         }}
       >
       <Router>

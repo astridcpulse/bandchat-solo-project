@@ -54,7 +54,7 @@ function AllProjectsPage() {
 
     });
     document.getElementById('partname').value='';
-
+    setNewProject('');
   }
 
 
@@ -63,7 +63,28 @@ function AllProjectsPage() {
       sx={{px: 5}}
       className="container"
     >
-      <h2>Welcome, {user.username}!</h2>
+      <Typography 
+        sx={{
+          mt:3,
+          pt:3,
+          ml:3,
+          pl:3,
+          fontSize: 40
+        }}
+      >
+        {user.username}'s Home Page 
+      </Typography>
+      <Typography
+        sx={{
+          ml:3,
+          pl:3,
+          mb:3,
+          pb:3,
+          fontSize:20
+        }}
+      >
+        view all your music projects below!
+      </Typography>
       
       <OutlinedInput 
         onChange={(evt) => setNewProject(evt.target.value)}
@@ -79,7 +100,10 @@ function AllProjectsPage() {
       </Button>
       
       {user.id && (
-      <Box>
+      <Box 
+        display='flex'
+        justifyContent='wrap'
+      >
       {projects.map(project => 
       
         <Card 
