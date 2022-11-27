@@ -3,7 +3,7 @@ import {useEffect, useState } from 'react';
 import AddCollaborators from '../AddCollaborators/AddCollaborators'
 
 import { useParams } from 'react-router-dom';
-
+import './ProjectWorkspace.css'
 import { ThemeProvider, 
         TextField, 
         Autocomplete, 
@@ -55,6 +55,7 @@ function ProjectWorkspace(){
     return (
         <>
             <Container
+                className='content'
                 // sx={{px: 5}}
             >    
                 <Typography 
@@ -102,6 +103,8 @@ function ProjectWorkspace(){
                 </form>
                 <WorkspaceTabs />
             </Container>
+            <img className='projectBackground dimpic' src='/images/the-mountain-goats.jpeg' />
+
         </>
     );
 }
