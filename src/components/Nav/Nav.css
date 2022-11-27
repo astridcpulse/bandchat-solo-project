@@ -1,3 +1,11 @@
-.nav-title{
+/* .nav-title{
     margin: 0;
+    z-index: 10;
+} */
+
+.nav{
+    margin: 0;
+    z-index: 10;
+    position: sticky;
+    box-shadow: 0px 0px 0px 20px black;
 }

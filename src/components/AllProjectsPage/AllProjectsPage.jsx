@@ -3,6 +3,8 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 import { useDispatch, useSelector} from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 // import AddCollaborators from '../AddCollaborators/AddCollaborators'
+
+import './AllProjectsPage.css';
 import { 
         Button,
         OutlinedInput,
@@ -62,41 +64,61 @@ function AllProjectsPage() {
   return (
     <Box 
       sx={{px: 5, height: '85vh'}}
-      className="container"
+      className="content"
     >
       {/* displays current user's name */}
       <Typography 
+        className='content'
         sx={{
           mt:3,
-          pt:3,
+          // pt:3,
           ml:3,
           pl:3,
-          fontSize: 40
+          fontSize: 40,
+          boxShadow:10,
+          width: 400,
+          height: 70,
+          borderRadius: 5,
+          backgroundColor:'rgba(25, 50, 60, .75)'
         }}
       >
         {user.username}'s Home Page 
       </Typography>
       <Typography
+        className='content'
         sx={{
           ml:3,
           pl:3,
           mb:3,
-          pb:3,
-          fontSize:20
+          // pb:3,
+          fontSize:20,
+          boxShadow:10,
+          width: 350,
+          height: 35,
+          borderRadius: 5,
+          backgroundColor:'rgba(25, 50, 60, .75)'
         }}
       >
         view all your music projects below!
       </Typography>
       {/* new project input */}
       <OutlinedInput 
+        className='content'
         onChange={(evt) => setNewProject(evt.target.value)}
         placeholder="new project name"
         id='partname'
+        sx={{
+          boxShadow: 20
+        }}
       ></OutlinedInput>
 
       <Button 
         onClick={postProject}
         variant="contained"
+        className='content'
+        sx={{
+          boxShadow: 10
+        }}
       >
         Create New Project
       </Button>
@@ -104,9 +126,10 @@ function AllProjectsPage() {
       {/* displays users */}
       {user.id && (
       <Box 
+      className='content'
         sx={{
           display:'flex',
-          wrap:'wrap' 
+          wrap:'wrap',
         }}
       >
 
@@ -121,7 +144,7 @@ function AllProjectsPage() {
             bgcolor: 'primary.light',
             p: 3,
             m:2,
-            boxShadow: 6,
+            boxShadow: 20,
             border: 2,
             
           }}
@@ -154,7 +177,7 @@ function AllProjectsPage() {
         )}
       </Box>
       )}
-
+    <img id='projectsBackground' src='/images/bad-brains-live.jpeg' />
     </Box>
   );
 }

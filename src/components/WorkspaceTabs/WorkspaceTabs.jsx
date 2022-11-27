@@ -55,7 +55,7 @@ import { ThemeProvider,
 
 
 function WorkspaceTabs(){
-    const [view, setView] = useState(0);
+    // const [view, setView] = useState(0);
 
     const params = useParams();
     const dispatch = useDispatch();
@@ -113,6 +113,7 @@ function WorkspaceTabs(){
                         <Box
                             display='flex'
                         >
+                            {/* part name displayed in box */}
                             <Typography 
                                 sx={{m:5}}
                                 variant='h5'
@@ -129,7 +130,7 @@ function WorkspaceTabs(){
                                 Delete Part
                             </Button>
                         </Box>
-
+                    {/* passing the specific {part} up to each part workspace */}
                         <Box>
                             <PartWorkspace
                                 justifyContent="end"

@@ -42,6 +42,7 @@ function App() {
             backgroundColor: 'paper.main', 
             // height: '100vh', 
             width:'100vw',
+            zIndex: '0'
         }}
       >
       <Router>
