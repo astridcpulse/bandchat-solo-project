@@ -177,6 +177,7 @@ function AllProjectsPage() {
         )}
       </Box>
       )}
+      {/* background image for page */}
     <img id='projectsBackground' src='/images/bad-brains-live.jpeg' />
     </Box>
   );

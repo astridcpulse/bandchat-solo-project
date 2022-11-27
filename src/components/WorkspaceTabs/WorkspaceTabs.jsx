@@ -19,7 +19,7 @@ import { ThemeProvider,
     } from '@mui/material';
 
 
-
+// function below associated with the MUI Tabs feature that was discarded
 // function TabPanel(props) {
 //     const { children, value, index, ...other } = props;
 //     return (
@@ -55,14 +55,15 @@ import { ThemeProvider,
 
 
 function WorkspaceTabs(){
+    // these ⤵️ were used for the Tabs Mui feature that was disarded
     // const [view, setView] = useState(0);
-
+    // const handleChange = (event, newView) => {
+    //         setView(newView);
+    //     };
     const params = useParams();
     const dispatch = useDispatch();
 
-    const handleChange = (event, newView) => {
-        setView(newView);
-    };
+    
 
      // dispatch on load to get parts based on project id (params.id)
      useEffect(() => {
@@ -73,7 +74,7 @@ function WorkspaceTabs(){
         })
 
     }, [])
-
+    //gets the parts associated with the project
     const projectParts = useSelector((store) => store.part);
 
 
@@ -94,6 +95,7 @@ function WorkspaceTabs(){
                 direction="column"
                 sx={{bgcolor: "primary.light", m:2 }}
             >
+                {/* map through the parts in a project */}
                 {projectParts && projectParts.map((part) =>  
 
                 <Card
@@ -120,6 +122,8 @@ function WorkspaceTabs(){
                             >
                                 {part.part_name}
                             </Typography>
+
+                            {/* delete part */}
                             <Button
                                 sx={{m:5}}
                                 value={part.id}

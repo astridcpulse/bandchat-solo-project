@@ -8,11 +8,6 @@
     filter: brightness(50%);
 }
 
-/* body{
-    background-image: URL('/public/images/bad-brains-live.jpeg') !important;
-    z-index: 10;
-} */
-
 .content {
     z-index: 1;
     position: sticky;

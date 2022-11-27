@@ -85,7 +85,7 @@ function ProjectWorkspace(){
                     <AddCollaborators
                         projectId={params.id}
                     />
-
+                {/*  create new part */}
                 <form
                     onSubmit={(evt) => handleCreatePart(evt)}
                 >
@@ -103,6 +103,8 @@ function ProjectWorkspace(){
                 </form>
                 <WorkspaceTabs />
             </Container>
+
+            {/* background image for page */}
             <img className='projectBackground dimpic' src='/images/the-mountain-goats.jpeg' />
 
         </>
