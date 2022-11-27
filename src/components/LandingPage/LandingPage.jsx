@@ -29,6 +29,7 @@ function LandingPage() {
       className="content"
       
     >
+      {/* Title logo */}
       <Typography 
           variant='h1'
           sx={{
@@ -52,6 +53,7 @@ function LandingPage() {
             >
               Already a BandChatter?
             </Typography>
+            {/* redirects to Login version of front page */}
             <Button 
               sx={{color: 'secondary.light', borderColor:'secondary.light'}}
               variant='outlined' 
@@ -64,6 +66,7 @@ function LandingPage() {
         </div>
       </div>
       
+      {/* background video on front page */}
       <video autoPlay muted loop id="myVideo">
         <source src="/videos/rooftop_band.mp4" type="video/mp4"/>
       </video>

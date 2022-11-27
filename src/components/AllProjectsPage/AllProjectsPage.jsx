@@ -53,6 +53,7 @@ function AllProjectsPage() {
       payload: newProject 
 
     });
+    // empty the input element
     document.getElementById('partname').value='';
     setNewProject('');
   }
@@ -63,6 +64,7 @@ function AllProjectsPage() {
       sx={{px: 5, height: '85vh'}}
       className="container"
     >
+      {/* displays current user's name */}
       <Typography 
         sx={{
           mt:3,
@@ -85,7 +87,7 @@ function AllProjectsPage() {
       >
         view all your music projects below!
       </Typography>
-      
+      {/* new project input */}
       <OutlinedInput 
         onChange={(evt) => setNewProject(evt.target.value)}
         placeholder="new project name"
@@ -99,14 +101,16 @@ function AllProjectsPage() {
         Create New Project
       </Button>
       
+      {/* displays users */}
       {user.id && (
       <Box 
         sx={{
           display:'flex',
           wrap:'wrap' 
         }}
-        
       >
+
+        {/* displays all the projects */}
       {projects.map(project => 
       
         <Card 
@@ -145,14 +149,11 @@ function AllProjectsPage() {
               Delete Project
             </Button>
           
-          {/* TODO add input autocomplete field to add all users to the project */}
         </Card>
         
         )}
       </Box>
       )}
-
-      {/* TODO when all projects are listed out, pressing on one will push history to project workplace page */}
 
     </Box>
   );

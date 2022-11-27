@@ -11,12 +11,11 @@ import {
 } from '@mui/material';
 
 
-
 function LoginPage() {
   const history = useHistory();
   const [heading, setHeading] = useState('BandChat');
 
-
+// This component has the login elements. The LandingPage has the register elements
   return (
     <Container 
       sx={{
@@ -25,6 +24,7 @@ function LoginPage() {
       align='center'
       className='content'>
 
+      {/* Title  */}
       <Typography 
           variant='h1'
           sx={{
@@ -39,6 +39,8 @@ function LoginPage() {
         <LoginForm  />
       </div>
       <center class='content'>
+
+        {/* redirects to register version of front page */}
         <Button
           sx={{color: 'secondary.light', borderColor:'secondary.light'}}
           variant='outlined'
@@ -48,58 +50,16 @@ function LoginPage() {
             history.push('/home');
           }}
         >
-          
           Register
         </Button>
       
       </center>
         
+      {/* background video on front page */}
       <video autoPlay muted loop id="myVideo">
         <source src="/videos/rooftop_band.mp4" type="video/mp4"/>
       </video>
     </Container>
-
-
-// -=----------\
-
-// <Container 
-//       sx={{
-//         pt: 20
-//       }}
-//       align='center' 
-//       className="container-default"
-//     >
-//       <Typography 
-//         variant='h1'
-//         sx={{fontFamily: 'Rubik Glitch', mb:4}}
-//       >{heading}</Typography>
-
-//       <div className="grid">
-//         <div className="grid-col grid-col_8">
-          
-//         </div>
-//         <div className="grid-col grid-col_4">
-//           <RegisterForm />
-
-//           <center>
-//             <Typography
-//               sx={{mt: 5}}
-//             >
-//               Already a BandChatter?
-//             </Typography>
-//             <Button 
-//               sx={{color: 'secondary.light', borderColor:'secondary.light'}}
-//               variant='outlined' 
-//               className="btn btn_sizeSm" 
-//               onClick={onLogin}
-//             >
-//               Login
-//             </Button>
-//           </center>
-//         </div>
-//       </div>
-//     </Container>
-
   );
 }
 

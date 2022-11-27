@@ -19,7 +19,6 @@ import AboutPage from '../AboutPage/AboutPage';
 import AllProjectsPage from '../AllProjectsPage/AllProjectsPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
-import RegisterPage from '../RegisterPage/RegisterPage';
 import ProjectWorkspace from '../ProjectWorkspace/ProjectWorkspace';
 
 import Theme from './Theme.jsx';
@@ -36,7 +35,7 @@ function App() {
   }, [dispatch]);
 
   return (
-    
+    // controled by Theme component
       <ThemeProvider theme={Theme}>
         <Paper          
           sx={{
@@ -99,7 +98,7 @@ function App() {
                 <Redirect to="/projects" />
                 :
                 // Otherwise, show the registration page
-                <RegisterPage />
+                <LandingPage />
               }
             </Route>
 
@@ -112,18 +111,16 @@ function App() {
                 // redirect them to the /user page
                 <Redirect to="/projects" />
                 :
-                // Otherwise, show the Landing page
+                // Otherwise, show the Landing page (acts as register)
                 <LandingPage />
               }
             </Route>
 
-
-            <ProtectedRoute path='/workspace/:id' exact>
-            
-              <Nav />
-              <ProjectWorkspace />
-            </ProtectedRoute>    
-            
+              <ProtectedRoute path='/workspace/:id' exact>
+              
+                <Nav />
+                <ProjectWorkspace />
+              </ProtectedRoute>    
 
             {/* If none of the other routes matched, we will show a 404. */}
             <Route>
