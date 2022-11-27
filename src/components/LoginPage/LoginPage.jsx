@@ -33,8 +33,8 @@ function LoginPage() {
             color: 'text.bandchat'
           }}
           className='title content'
-          
       >{heading}</Typography>
+      
       <div className='content'>
         <LoginForm  />
       </div>

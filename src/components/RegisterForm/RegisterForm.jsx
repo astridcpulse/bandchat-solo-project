@@ -34,9 +34,10 @@ function RegisterForm() {
         p: 5,
         width: 350,
         display: 'flex',
-        justifyContent: 'left',
+        justifyContent: 'center',
         fontFamily: 'Helvetica, sans-serif',
-        
+        border:2,
+        borderColor: 'secondary.light'
       }}
     >
     <form className="formPanel" onSubmit={registerUser}>
@@ -88,7 +89,11 @@ function RegisterForm() {
           </label>
         </Box>
         <div>
-          <Button variant='contained' className="btn" type="submit" name="submit" value="Register">
+          <Button variant='contained' 
+            type="submit" 
+            name="submit" 
+            value="Register"
+          >
               Register
           </Button>
         </div>

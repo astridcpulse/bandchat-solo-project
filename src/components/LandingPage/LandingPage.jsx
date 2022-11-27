@@ -30,13 +30,13 @@ function LandingPage() {
       
     >
       <Typography 
-        className='content'
-        variant='h1'
-        sx={{
-          fontFamily: 'Rubik Glitch', 
-          mb:4,
-
-        }}
+          variant='h1'
+          sx={{
+            fontFamily: 'Rubik Glitch',
+            mb:4,
+            color: 'text.bandchat'
+          }}
+          className='title content'
       >{heading}</Typography>
 
       <div className="content">
