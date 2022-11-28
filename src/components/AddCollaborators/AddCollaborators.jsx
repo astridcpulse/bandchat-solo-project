@@ -8,7 +8,8 @@ import { Button,
     ListItem,
     Typography,
     ListboxProps,
-    Divider
+    Divider,
+    Chips
 } from '@mui/material';
 import { useDispatch, useSelector} from 'react-redux';
 import axios from 'axios';
@@ -89,7 +90,7 @@ function AddCollaborators({projectId}){
             ListboxProps= {{
                 sx: {
                   color: '#fff',
-                  bgcolor: 'secondary.dark',
+                  backgroundColor: 'secondary.darker',
                   border: 2,
                   fontWeight: 'bold'
                   }

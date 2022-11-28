@@ -9,6 +9,7 @@ const Theme = createTheme({
         },
         secondary: {
             main:'#92cbaa',
+            darker:'#488573',
             contrastText:'#fff'
         },
         error: {
@@ -108,6 +109,18 @@ const Theme = createTheme({
                 }
             }
         },
+        MuiChip: {
+            // variants: {
+            //     props: {variant: 'outlined'}
+            // },
+            styleOverrides: {
+                root: {
+                    color: '#fff',
+                    backgroundColor: '#488573',
+                }
+            }
+        }
+
         
     }
 })
