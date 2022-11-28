@@ -28,7 +28,7 @@ const Theme = createTheme({
             // active: '#001E3C'
         },
         text: {
-            primary: 'rgba(255, 255, 255, 0.72)',
+            primary: 'rgba(255, 255, 255, 0.9)',
             secondary: 'rgba(255, 255, 255, 0.62)',
             disabled: 'rgba(255, 255, 255, 0.52)',
             black: '#000000',
@@ -110,9 +110,6 @@ const Theme = createTheme({
             }
         },
         MuiChip: {
-            // variants: {
-            //     props: {variant: 'outlined'}
-            // },
             styleOverrides: {
                 root: {
                     color: '#fff',

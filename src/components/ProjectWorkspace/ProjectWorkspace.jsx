@@ -58,7 +58,10 @@ function ProjectWorkspace(){
                 className='content'
                 // sx={{px: 5}}
             >    
-                <Typography 
+                <Typography
+                    // sx ={{
+                    //     color: 
+                    // }} 
                     variant="h3"
                     align='center'
                 > {thisProject.project_name}</Typography>

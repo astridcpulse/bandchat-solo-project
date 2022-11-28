@@ -30,7 +30,7 @@ function Nav() {
         <Typography 
           sx={{
             fontFamily: 'Rubik Glitch',
-            color: 'rgba(255, 255, 255, 0.72)'
+            color: 'rgba(255, 255, 255, 0.85)'
           }}
           variant='h2' 
           className="nav-title"
