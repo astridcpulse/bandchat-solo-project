@@ -72,37 +72,23 @@ function AllProjectsPage() {
         sx={{
           mt:3,
           ml:3,
+          mb: 3,
           pl:3,
           border: 2,
           // borderColor: 'divider',
           fontSize: 40,
           boxShadow:10,
           width: 400,
-          height: 70,
-          borderRadius: 5,
+          height: 100,
+          borderRadius: 1,
           bgcolor:'primary.light',
           opacity: '.8'
         }}
       >
         {user.username}'s Home Page 
-      </Typography>
-      <Typography
-        className='content'
-        sx={{
-          ml:3,
-          pl:3,
-          mb:3,
-          border: 2,
-          fontSize:20,
-          boxShadow:10,
-          width: 350,
-          height: 35,
-          borderRadius: 5,
-          bgcolor:'primary.light',
-          opacity: '.8'
-        }}
-      >
-        view all your music projects below!
+        <Typography>
+          view all your music projects below!
+        </Typography>
       </Typography>
       {/* new project input */}
       <OutlinedInput 
