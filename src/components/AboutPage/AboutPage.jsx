@@ -10,7 +10,10 @@ import {
   Link,
   Stack,
   Button,
-  IconButton
+  IconButton,
+  List, 
+  ListItem,
+  // Link
 } from '@mui/material';
 // This is one of our simplest components
 // It doesn't have local state,
@@ -31,12 +34,41 @@ function AboutPage() {
             BandChat?
           </Typography>
         </Box>
-        <Typography 
-          sx={{m:3, maxWidth: '70ch'}}
-          variant='h5'
+        <Box
+          sx={{display: 'flex'}}
         >
-          BandChat is a workspace for musicians to collaborate together on their musical projects without stepping on each other's toes. Everyone can have their own workspace, and with BandChat you wont need to wait til rehearsal to find out what your drummer has been up to!
-        </Typography>
+          <Typography 
+            sx={{m:3, maxWidth: '70ch'}}
+            variant='h5'
+          >
+            BandChat is a workspace for musicians to collaborate together on their musical projects without stepping on each other's toes. Everyone can have their own workspace, and with BandChat you wont need to wait til rehearsal to find out what your drummer has been up to!
+          </Typography>
+          <Typography>
+            <List>
+              <ListItem
+                sx={{fontWeight: 'bold', textDecoration: 'underline',}}
+              >
+                Tech Used
+              </ListItem>
+              <ListItem> Node.js </ListItem>
+              <ListItem> Express.js </ListItem>
+              <ListItem> React-Redux-Saga.js </ListItem>
+              <ListItem> Javascript </ListItem>
+              <ListItem> PostgreSQL </ListItem>
+              <ListItem> Material UI </ListItem>
+              <ListItem>
+                <Link sx={{color: 'secondary.light'}} href='https://www.npmjs.com/package/multer'>
+                  Multer
+                </Link>   
+              </ListItem>
+              <ListItem>
+                <Link sx={{color: 'secondary.light'}} href='https://github.com/mattdiamond/Recorderjs'>
+                  RecorderJS by Matt Diamond 
+                </Link>
+              </ListItem>
+            </List>
+          </Typography>
+        </Box>
       </Box>
       <Card
         sx={{

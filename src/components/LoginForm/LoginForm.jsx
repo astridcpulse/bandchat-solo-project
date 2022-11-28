@@ -74,6 +74,7 @@ function LoginForm() {
             type="text"
             name="username"
             required
+            autocomplete="off" //turned off for presentation
             value={username}
             onChange={(event) => setUsername(event.target.value)}
           />
@@ -91,6 +92,7 @@ function LoginForm() {
             type="password"
             name="password"
             required
+            autocomplete="off" // turned off for presentation
             value={password}
             onChange={(event) => setPassword(event.target.value)}
           />

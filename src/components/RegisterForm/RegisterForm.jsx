@@ -66,6 +66,8 @@ function RegisterForm() {
               type="text"
               name="username"
               value={username}
+              autocomplete="off" //turned off for presentation
+
               required
               onChange={(event) => setUsername(event.target.value)}
             />
@@ -83,6 +85,7 @@ function RegisterForm() {
               type="password"
               name="password"
               value={password}
+              autocomplete="off" //turned off for presentation
               required
               onChange={(event) => setPassword(event.target.value)}
             />
