@@ -71,15 +71,17 @@ function AllProjectsPage() {
         className='content'
         sx={{
           mt:3,
-          // pt:3,
           ml:3,
           pl:3,
+          border: 2,
+          // borderColor: 'divider',
           fontSize: 40,
           boxShadow:10,
           width: 400,
           height: 70,
           borderRadius: 5,
-          backgroundColor:'rgba(25, 50, 60, .75)'
+          bgcolor:'primary.light',
+          opacity: '.8'
         }}
       >
         {user.username}'s Home Page 
@@ -90,13 +92,14 @@ function AllProjectsPage() {
           ml:3,
           pl:3,
           mb:3,
-          // pb:3,
+          border: 2,
           fontSize:20,
           boxShadow:10,
           width: 350,
           height: 35,
           borderRadius: 5,
-          backgroundColor:'rgba(25, 50, 60, .75)'
+          bgcolor:'primary.light',
+          opacity: '.8'
         }}
       >
         view all your music projects below!
@@ -137,6 +140,7 @@ function AllProjectsPage() {
       {projects.map(project => 
       
         <Card 
+          className='projectArea'
           sx={{
             width: 500, 
             borderBottom: 1, 
@@ -146,7 +150,7 @@ function AllProjectsPage() {
             m:2,
             boxShadow: 20,
             border: 2,
-            
+            opacity: '.9'
           }}
           key={project.id}
         >
