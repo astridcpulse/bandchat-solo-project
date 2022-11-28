@@ -43,6 +43,7 @@ function AboutPage() {
           >
             BandChat is a workspace for musicians to collaborate together on their musical projects without stepping on each other's toes. Everyone can have their own workspace, and with BandChat you wont need to wait til rehearsal to find out what your drummer has been up to!
           </Typography>
+          
           <Typography>
             <List>
               <ListItem
@@ -56,11 +57,16 @@ function AboutPage() {
               <ListItem> Javascript </ListItem>
               <ListItem> PostgreSQL </ListItem>
               <ListItem> Material UI </ListItem>
+            </List>
+          </Typography>
+          <Typography>
+            <List>
               <ListItem>
                 <Link sx={{color: 'secondary.light'}} href='https://www.npmjs.com/package/multer'>
                   Multer
-                </Link>   
+                </Link>
               </ListItem>
+              
               <ListItem>
                 <Link sx={{color: 'secondary.light'}} href='https://github.com/mattdiamond/Recorderjs'>
                   RecorderJS by Matt Diamond 
