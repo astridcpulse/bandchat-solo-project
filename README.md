@@ -31,9 +31,16 @@ Server and Client side made with Javascript
 
 ## Screenshots
 
-Home page
+Home page. 
+Login or register to enter the site. 
+Note: Any manual entries of url to the webpage bar will redirect to home page if not logged in
 ![App Screenshot](documentation/images/Bandchat_login.png)
 
+
+All Projects page.
+From here, a logged in user can create new "projects" (songs, compositions, general musical notes and musings)
+
+Clicking on the title of the project card will bring the user to the Project Workspace
 ![App Screenshot](documentation/images/all_projects_screen.png)
 
 
