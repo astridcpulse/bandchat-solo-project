@@ -32,9 +32,9 @@ Server and Client side made with Javascript
 ## Screenshots
 
 Home page
-![App Screenshot](/Users/asty/programming/prime/tier-2/week-13/bandchat-solo-project/documentation/images/Bandchat_login.png)
+![App Screenshot](documentation/images/Bandchat_login.png)
 
-![App Screenshot](/Users/asty/programming/prime/tier-2/week-13/bandchat-solo-project/documentation/images/all_projects_screen.png)
+![App Screenshot](documentation/images/all_projects_screen.png)
 
 
 
