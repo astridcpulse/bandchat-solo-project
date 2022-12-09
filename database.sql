@@ -1,4 +1,4 @@
-
+-- not up to date. Copy from bit io or the dump.sql in downloads
 --database name: bandchat_db
 
 CREATE TABLE "user" (

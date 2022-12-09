@@ -26,7 +26,7 @@ function Nav() {
       }}
       className="nav"
     >
-      <Link variant='inherit' underline='none' href="/home">
+      <Link variant='inherit' underline='none' to="/home">
         <Typography 
           sx={{
             fontFamily: 'Rubik Glitch',
