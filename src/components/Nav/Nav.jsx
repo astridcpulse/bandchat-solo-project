@@ -26,7 +26,7 @@ function Nav() {
       }}
       className="nav"
     >
-      <Link variant='inherit' underline='none' to="/home">
+      <Link variant='inherit' underline='none' href="https://band-chat.herokuapp.com/#/projects">
         <Typography 
           sx={{
             fontFamily: 'Rubik Glitch',
